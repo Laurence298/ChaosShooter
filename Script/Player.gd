@@ -95,14 +95,6 @@ func _physics_process(delta):
 	velocity += extra_velocity
 	extra_velocity = extra_velocity.lerp(Vector2.ZERO, delta * 12)
 	
-	# flips drill legs and body and weapon accorreding to the direction
-	if direction.x != 0:
-		if direction.x > 1:
-			sprite_lower.scale.x = 1
-			sprite_upper.animation.play("")
-		if direction.x < 1:
-			sprite_lower.scale.x = -1
-	
 	
 	
 	move_and_slide()
@@ -130,16 +122,36 @@ func _process(delta):
 		$Rat.look_at(mouse_pos)
 	#camera_2d.global_position = camera_2d.global_position.round()
 	
+	# flips drill legs and body and weapon accorreding to the direction
 	var direction = Input.get_vector("left", "right", "up", "down")
 	if direction.x > 0:
+		sprite_lower.scale.x = 1
 		sprite_upper.play(upgrades["Body"]["FR"])
 		arm.play(upgrades["Weapon"]["FR"])
 	elif direction.x < 0:
+		sprite_lower.scale.x = -1
 		sprite_upper.play(upgrades["Body"]["FL"])
 		arm.play(upgrades["Weapon"]["FL"])
-	elif direction.x == 0:
+	else:
 		sprite_upper.stop()
-	
+	if direction.y < 0:
+		if direction.x > 0:
+			sprite_lower.scale.x = 1
+			sprite_upper.play(upgrades["Body"]["BR"])
+			arm.play(upgrades["Weapon"]["BR"])
+		elif direction.x < 0:
+			sprite_lower.scale.x = -1
+			sprite_upper.play(upgrades["Body"]["BL"])
+			arm.play(upgrades["Weapon"]["BL"])
+		else:
+			sprite_upper.play(upgrades["Body"]["BL"])
+			arm.play(upgrades["Weapon"]["BL"])
+	else:
+		if sprite_upper.animation == (upgrades["Body"]["BL"]):
+			sprite_upper.play(upgrades["Body"]["FL"])
+		if sprite_upper.animation == (upgrades["Body"]["BR"]):
+			sprite_upper.play(upgrades["Body"]["FR"])
+		
 func _input(event):
 	match equiped_Weapon:
 		PowerUp.WeaponType.SMALL_GUN:
