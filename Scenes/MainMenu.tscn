@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://sbj8rwofc0s3"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenuBlock" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 513.0
+color = Color(0.568973, 0.568973, 0.568973, 1)
+
+[node name="Title" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 273.0
+offset_top = 69.0
+offset_right = 655.0
+offset_bottom = 129.0
+text = "                                    RoboChaos"
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 185.0
+offset_right = 580.0
+offset_bottom = 251.0
+text = "Start
+"
