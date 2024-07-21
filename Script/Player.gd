@@ -5,6 +5,21 @@ class_name Player
 @onready var energy_bar = $CanvasLayer/EnergyBar
 #@onready var camera_2d = $Camera2D
 #@onready var anim_sprite = $AnimSprite
+@onready var sprite_upper = $SpriteUpper
+@onready var arm = $Arm
+@onready var sprite_lower = $SpriteLower
+
+var upgrades = {
+"Body": ["back_left1", "back_right1", "front_left1", "back_left1"], 
+"Weapon": ["back_left1", "back_right1", "front_left1", "back_left1"]
+"Legs": ["back", "front"]
+}
+
+
+var current_arm
+var current_body
+var current_legs 
+
 
 @onready var sprite_upper = $SpriteUpper
 @onready var arm = $Arm
@@ -93,6 +108,14 @@ func _physics_process(delta):
 	
 	velocity += extra_velocity
 	extra_velocity = extra_velocity.lerp(Vector2.ZERO, delta * 12)
+	
+	# flips drill legs and body and weapon accorreding to the direction
+	if direction.x != 0:
+		if direction.x > 1:
+			sprite_lower.scale.x = 1
+			sprite_upper.animation.play("")
+		if direction.x < 1:
+			sprite_lower.scale.x = -1
 	
 	
 	
