@@ -693,22 +693,20 @@ script = ExtResource("1_jikto")
 [node name="SpriteLower" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_5h536")
-animation = &"front"
+animation = &"back"
 autoplay = "front"
-frame_progress = 0.924745
 
 [node name="Arm" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_3cm3d")
-animation = &"front_right2"
+animation = &"front_left1"
 autoplay = "front_right2"
 
 [node name="SpriteUpper" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -14)
 sprite_frames = SubResource("SpriteFrames_wfq45")
-animation = &"back_left1"
+animation = &"front_left1"
 autoplay = "front_right1"
-frame_progress = 0.152106
 
 [node name="Rat" type="Node2D" parent="."]
 visible = false
@@ -773,3 +771,10 @@ label_settings = SubResource("LabelSettings_g6msb")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_o2vm6")
+
+[node name="FireRateTimer" type="Timer" parent="."]
+
+[node name="HeartTick" type="Timer" parent="."]
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
+[connection signal="timeout" from="HeartTick" to="." method="_on_heart_tick_timeout"]

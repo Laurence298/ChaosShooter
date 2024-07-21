@@ -48,15 +48,22 @@ var upgrades = {
 "Weapon": gun,
 "Legs": drill,
 }
+#body modification Status
+const MAX_HEALTH : int = 100
+var health: int = MAX_HEALTH
 
+const max_heat_gauge: float= 100
+var heat_gauge: float = max_heat_gauge
+#body modification
 var current_arm
 var current_body
 var current_legs
 #endregion
 
+var curretbodymodification: PowerUp.body_modification
 var vec_to_crosshair
 
-# Bullet info
+# Bullet info and weapon
 var playerstats: Player_Status
 const BULLET = preload("res://Scenes/bullet.tscn")
 const SPEED = 300.0
@@ -95,6 +102,14 @@ func _physics_process(delta):
 	
 	velocity += extra_velocity
 	extra_velocity = extra_velocity.lerp(Vector2.ZERO, delta * 12)
+	
+	# flips drill legs and body and weapon accorreding to the direction
+	if direction.x != 0:
+		if direction.x > 1:
+			sprite_lower.scale.x = 1
+			#asprite_upper.animation.play("")
+		if direction.x < 1:
+			sprite_lower.scale.x = -1
 	
 	
 	
@@ -156,7 +171,7 @@ func _process(delta):
 func _input(event):
 	match equiped_Weapon:
 		PowerUp.WeaponType.SMALL_GUN:
-			if event.is_action_pressed("shoot") && can_fire:
+			if event.is_action_released("shoot") && can_fire:
 				FireGunSeting()
 				BulletManager.create_bullet(self, BulletManager.CollisionLayer.ENEMY, vec_to_crosshair*1500, 25, self.global_position, playerstats)
 				DebugDraw2D.line(self.position, self.position + (vec_to_crosshair * self.global_position.distance_to(crosshair.global_position)), Color.RED, 3, 0.5)
@@ -166,6 +181,14 @@ func _input(event):
 				BulletManager.shotgun(self, BulletManager.CollisionLayer.ENEMY, vec_to_crosshair*1500, 15, 35, 500, 0,playerstats)
 				DebugDraw2D.line(self.position, self.position + (vec_to_crosshair * self.global_position.distance_to(crosshair.global_position)), Color.RED, 3, 0.5)
 
+func Body_modification(curretbodymodification: PowerUp.body_modification):
+	match curretbodymodification:
+		PowerUp.body_modification.POWERSOURCE:
+			print("powersource")
+			#logic to change the body parts
+		PowerUp.body_modification.HEART:
+			print("Heart")
+			#logic to change the body parts
 
 func FireGunSeting():
 	energy -= 100
@@ -177,10 +200,17 @@ func FireGunSeting():
 
 func set_combatStatus(player_stat: Player_Status):
 	playerstats = player_stat
-	$FireRateTimer.wait_time = player_stat.firerate
-	knockBack = player_stat.KnockBackStreagth
-	
+	if(playerstats.body_modification != PowerUp.body_modification.NOMODIFICATION):
+		curretbodymodification = playerstats.body_modification
+	if(playerstats.weapon_Type != PowerUp.WeaponType.NOWEAPON):
+		$FireRateTimer.wait_time = playerstats.firerate
+		knockBack = playerstats.KnockBackStreagth
+		equiped_Weapon = playerstats.weapon_Type
 
 
 func _on_fire_rate_timer_timeout():
 	can_fire = true
+
+
+func _on_heart_tick_timeout():
+	health -= 1;
