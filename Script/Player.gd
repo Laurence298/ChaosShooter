@@ -6,7 +6,7 @@ class_name Player
 #@onready var camera_2d = $Camera2D
 #@onready var anim_sprite = $AnimSprite
 
-
+#region animation variables
 @onready var sprite_upper = $SpriteUpper
 @onready var arm = $Arm
 @onready var sprite_lower = $SpriteLower
@@ -52,6 +52,7 @@ var upgrades = {
 var current_arm
 var current_body
 var current_legs
+#endregion
 
 var vec_to_crosshair
 

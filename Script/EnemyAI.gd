@@ -8,6 +8,7 @@ var current_state: EnemyState = EnemyState.MOVEMENT_STATE
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 @onready var enemies := get_tree().get_nodes_in_group("enemy")
 @export var min_Distance = 3
+@onready var sprite_2d = $Sprite2D
 
 
 
@@ -40,7 +41,13 @@ func _physics_process(delta):
 				$AttackTimer.start()
 				direction = (player.position - self.position).normalized()
 				
-			velocity = direction * attackSpeed		
+			velocity = direction * attackSpeed
+			if direction.x > 0:
+				sprite_2d.scale.x = 1
+			elif direction.x < 0:
+				sprite_2d.scale.x = -1
+			else:
+				sprite_2d.stop()
 				
 		EnemyState.MOVEMENT_STATE:
 			DirectionProcess(delta)
