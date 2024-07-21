@@ -8,15 +8,22 @@ class_name Player
 
 var vec_to_crosshair
 
+# Bullet info
+var playerstats: Player_Status
 const BULLET = preload("res://Scenes/bullet.tscn")
 const SPEED = 300.0
 const MAX_ENERGY:float = 100
-
+var can_fire : bool;
+var equiped_Weapon: PowerUp.WeaponType
 var energy:float = MAX_ENERGY
+var knockBack: float;
+
 var extra_velocity:Vector2 = Vector2(0,0)
 
 func _ready():
 	#anim_sprite.play("default")
+	equiped_Weapon = PowerUp.WeaponType.SMALL_GUN
+	can_fire = true;
 	return
 
 func _physics_process(delta):
@@ -79,14 +86,33 @@ func _process(delta):
 		$SpriteUpper.stop()
 	
 func _input(event):
-	if event.is_action_pressed("shoot"):
-		energy -= 100
-		$AudioStreamPlayer.play()
-		#BulletManager.create_bullet(self, BulletManager.CollisionLayer.ENEMY, vec_to_crosshair*1500, 25, self.global_position)
-		BulletManager.shotgun(self, BulletManager.CollisionLayer.ENEMY, vec_to_crosshair*1500, 15, 35, 500, 0)
-		DebugDraw2D.line(self.position, self.position + (vec_to_crosshair * self.global_position.distance_to(crosshair.global_position)), Color.RED, 3, 0.5)
-		#extra_velocity += vec_to_crosshair * -1 * 1800
+	match equiped_Weapon:
+		PowerUp.WeaponType.SMALL_GUN:
+			if event.is_action_pressed("shoot") && can_fire:
+				FireGunSeting()
+				BulletManager.create_bullet(self, BulletManager.CollisionLayer.ENEMY, vec_to_crosshair*1500, 25, self.global_position, playerstats)
+				DebugDraw2D.line(self.position, self.position + (vec_to_crosshair * self.global_position.distance_to(crosshair.global_position)), Color.RED, 3, 0.5)
+		PowerUp.WeaponType.BIG_GUN:
+			if event.is_action_pressed("shoot") && can_fire:
+				FireGunSeting()
+				BulletManager.shotgun(self, BulletManager.CollisionLayer.ENEMY, vec_to_crosshair*1500, 15, 35, 500, 0,playerstats)
+				DebugDraw2D.line(self.position, self.position + (vec_to_crosshair * self.global_position.distance_to(crosshair.global_position)), Color.RED, 3, 0.5)
+
+
+func FireGunSeting():
+	energy -= 100
+	can_fire = false
+	$FireRateTimer.start()
+	extra_velocity += vec_to_crosshair * -1 * knockBack
+	$AudioStreamPlayer.play()
+	#BulletManager.create_bullet(self, BulletManager.CollisionLayer.ENEMY, vec_to_crosshair*1500, 25, self.global_position)
 
 func set_combatStatus(player_stat: Player_Status):
-	print("upgrades reacived")
+	playerstats = player_stat
+	$FireRateTimer.wait_time = player_stat.firerate
+	knockBack = player_stat.KnockBackStreagth
 	
+
+
+func _on_fire_rate_timer_timeout():
+	can_fire = true

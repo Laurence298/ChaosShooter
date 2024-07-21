@@ -169,6 +169,7 @@ texture_region_size = Vector2i(64, 64)
 0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 10, -32, 10)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sk8ly"]
+render_priority = 0
 shader = ExtResource("5_xkkgc")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0683d"]

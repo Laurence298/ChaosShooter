@@ -651,15 +651,16 @@ frame_progress = 0.0727713
 [node name="Arm" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_3cm3d")
-animation = &"front_right2"
-autoplay = "front_right2"
+animation = &"front_left"
 
 [node name="SpriteUpper" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -14)
-sprite_frames = SubResource("SpriteFrames_wfq45")
-animation = &"front_right1"
-autoplay = "front_right1"
-frame_progress = 0.139872
+position = Vector2(-6, -25)
+sprite_frames = SubResource("SpriteFrames_0k8ox")
+animation = &"front_left"
+
+[node name="SpriteLower" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12.5)
+sprite_frames = SubResource("SpriteFrames_5h536")
 
 [node name="Rat" type="Node2D" parent="."]
 visible = false
@@ -724,3 +725,7 @@ label_settings = SubResource("LabelSettings_g6msb")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_o2vm6")
+
+[node name="FireRateTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

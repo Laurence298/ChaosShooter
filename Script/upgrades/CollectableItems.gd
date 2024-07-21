@@ -1,8 +1,8 @@
 extends Area2D
 
-@export var firerate = 0
+@export var firerate : float 
 @export var recoil = 0
-@export var bullet_size = 0
+@export var bullet_size : Vector2
 @export var damage = 0
 @export var power_up: PowerUp.StatType
 @export var weapon_Type: PowerUp.WeaponType

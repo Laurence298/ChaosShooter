@@ -5,6 +5,6 @@ var KnockBackStreagth: float = 0
 var enemyKnockBackStreangth: float = 0
 var power_up: PowerUp.StatType
 var weapon_Type: PowerUp.WeaponType
-var firerate = 0
-var bullet_size = 0
+var firerate : float
+var bullet_size : Vector2
 var damage = 0
