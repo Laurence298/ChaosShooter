@@ -5,20 +5,6 @@ class_name Player
 @onready var energy_bar = $CanvasLayer/EnergyBar
 #@onready var camera_2d = $Camera2D
 #@onready var anim_sprite = $AnimSprite
-@onready var sprite_upper = $SpriteUpper
-@onready var arm = $Arm
-@onready var sprite_lower = $SpriteLower
-
-var upgrades = {
-"Body": ["back_left1", "back_right1", "front_left1", "back_left1"], 
-"Weapon": ["back_left1", "back_right1", "front_left1", "back_left1"]
-"Legs": ["back", "front"]
-}
-
-
-var current_arm
-var current_body
-var current_legs 
 
 
 @onready var sprite_upper = $SpriteUpper
