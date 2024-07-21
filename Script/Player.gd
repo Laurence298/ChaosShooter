@@ -6,6 +6,52 @@ class_name Player
 #@onready var camera_2d = $Camera2D
 #@onready var anim_sprite = $AnimSprite
 
+@onready var sprite_upper = $SpriteUpper
+@onready var arm = $Arm
+@onready var sprite_lower = $SpriteLower
+
+var heart = {
+	"BL": "back_left1",
+	"BR": "back_right1", 
+	"FL": "front_left1", 
+	"FR": "front_left1"
+}
+var battery = {
+	"BL": "back_left2",
+	"BR": "back_right2", 
+	"FL": "front_left2", 
+	"FR": "front_left2"
+}
+
+var gun = {
+	"BL": "back_left1",
+	"BR": "back_right1", 
+	"FL": "front_left1", 
+	"FR": "front_left1"
+}
+
+var blaster = {
+	"BL": "back_left2",
+	"BR": "back_right2", 
+	"FL": "front_left2", 
+	"FR": "front_left2"
+}
+
+var drill = {
+	"B": "back",
+	"F": "front"
+}
+
+var upgrades = {
+"Body": heart, 
+"Weapon": gun,
+"Legs": drill,
+}
+
+var current_arm
+var current_body
+var current_legs
+
 var vec_to_crosshair
 
 # Bullet info
@@ -77,13 +123,13 @@ func _process(delta):
 	
 	var direction = Input.get_vector("left", "right", "up", "down")
 	if direction.x > 0:
-		$SpriteUpper.play("front_right")
-		$Arm.play("front_right")
+		sprite_upper.play(upgrades["Body"]["FR"])
+		arm.play(upgrades["Weapon"]["FR"])
 	elif direction.x < 0:
-		$SpriteUpper.play("front_left")
-		$Arm.play("front_left")
+		sprite_upper.play(upgrades["Body"]["FL"])
+		arm.play(upgrades["Weapon"]["FL"])
 	elif direction.x == 0:
-		$SpriteUpper.stop()
+		sprite_upper.stop()
 	
 func _input(event):
 	match equiped_Weapon:
