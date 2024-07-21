@@ -15,27 +15,27 @@ var heart = {
 	"BL": "back_left1",
 	"BR": "back_right1", 
 	"FL": "front_left1", 
-	"FR": "front_left1"
+	"FR": "front_right1"
 }
 var battery = {
 	"BL": "back_left2",
 	"BR": "back_right2", 
 	"FL": "front_left2", 
-	"FR": "front_left2"
+	"FR": "front_right2"
 }
 
 var gun = {
 	"BL": "back_left1",
 	"BR": "back_right1", 
 	"FL": "front_left1", 
-	"FR": "front_left1"
+	"FR": "front_right1"
 }
 
 var blaster = {
 	"BL": "back_left2",
 	"BR": "back_right2", 
 	"FL": "front_left2", 
-	"FR": "front_left2"
+	"FR": "front_right2"
 }
 
 var drill = {
@@ -44,8 +44,8 @@ var drill = {
 }
 
 var upgrades = {
-"Body": heart, 
-"Weapon": gun,
+"Body": battery, 
+"Weapon": blaster,
 "Legs": drill,
 }
 #body modification Status
@@ -79,6 +79,8 @@ func _ready():
 	#anim_sprite.play("default")
 	equiped_Weapon = PowerUp.WeaponType.SMALL_GUN
 	can_fire = true;
+	sprite_upper.play(upgrades["Body"]["FR"])
+	arm.play(upgrades["Weapon"]["FR"])
 	return
 
 func _physics_process(delta):
@@ -102,14 +104,6 @@ func _physics_process(delta):
 	
 	velocity += extra_velocity
 	extra_velocity = extra_velocity.lerp(Vector2.ZERO, delta * 12)
-	
-	# flips drill legs and body and weapon accorreding to the direction
-	if direction.x != 0:
-		if direction.x > 1:
-			sprite_lower.scale.x = 1
-			#asprite_upper.animation.play("")
-		if direction.x < 1:
-			sprite_lower.scale.x = -1
 	
 	
 	
@@ -144,30 +138,39 @@ func _process(delta):
 		sprite_lower.scale.x = 1
 		sprite_upper.play(upgrades["Body"]["FR"])
 		arm.play(upgrades["Weapon"]["FR"])
+		arm.z_index = 0
 	elif direction.x < 0:
 		sprite_lower.scale.x = -1
 		sprite_upper.play(upgrades["Body"]["FL"])
 		arm.play(upgrades["Weapon"]["FL"])
+		arm.z_index = 0
 	else:
 		sprite_upper.stop()
+		arm.z_index = 0
 	if direction.y < 0:
 		if direction.x > 0:
 			sprite_lower.scale.x = 1
 			sprite_upper.play(upgrades["Body"]["BR"])
 			arm.play(upgrades["Weapon"]["BR"])
+			arm.z_index = 1
 		elif direction.x < 0:
 			sprite_lower.scale.x = -1
 			sprite_upper.play(upgrades["Body"]["BL"])
 			arm.play(upgrades["Weapon"]["BL"])
+			arm.z_index = 1
 		else:
 			sprite_upper.play(upgrades["Body"]["BL"])
 			arm.play(upgrades["Weapon"]["BL"])
+			arm.z_index = 1
 	else:
 		if sprite_upper.animation == (upgrades["Body"]["BL"]):
 			sprite_upper.play(upgrades["Body"]["FL"])
+			arm.play(upgrades["Weapon"]["FL"])
+			arm.z_index = 0
 		if sprite_upper.animation == (upgrades["Body"]["BR"]):
 			sprite_upper.play(upgrades["Body"]["FR"])
-		
+			arm.play(upgrades["Weapon"]["FR"])
+			arm.z_index = 0
 func _input(event):
 	match equiped_Weapon:
 		PowerUp.WeaponType.SMALL_GUN:
