@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://dg2ooau0vrcse"]
+
+[ext_resource type="Script" path="res://Script/main.gd" id="1_e5dyd"]
+[ext_resource type="PackedScene" uid="uid://vgv1eqkdo6ju" path="res://room.tscn" id="2_nmk2p"]
+[ext_resource type="PackedScene" uid="uid://c60tvy3hgo56j" path="res://Scenes/player.tscn" id="7_abgl2"]
+[ext_resource type="PackedScene" uid="uid://dnky713twoylc" path="res://Scenes/PowerIteams.tscn" id="7_ivppe"]
+[ext_resource type="PackedScene" uid="uid://dwxko5gcwd3w4" path="res://Scenes/Enemy.tscn" id="8_aggf8"]
+[ext_resource type="Script" path="res://Script/EnemySpawner.gd" id="9_rykgk"]
+[ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="10_6eeyb"]
+
+[sub_resource type="Environment" id="Environment_k3g3d"]
+background_mode = 3
+glow_enabled = true
+glow_levels/1 = 2.48
+glow_levels/2 = 1.0
+glow_intensity = 2.0
+glow_hdr_threshold = 1.1
+glow_hdr_luminance_cap = 101.65
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_e5dyd")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_k3g3d")
+
+[node name="Room" parent="." instance=ExtResource("2_nmk2p")]
+starting_room = true
+
+[node name="EnemySpawner" type="Node2D" parent="Room"]
+position = Vector2(653, 159)
+script = ExtResource("9_rykgk")
+
+[node name="Timer" type="Timer" parent="Room/EnemySpawner"]
+wait_time = 5.0
+autostart = true
+
+[node name="Enemy" parent="Room" instance=ExtResource("8_aggf8")]
+position = Vector2(734, 129)
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("7_abgl2")]
+position = Vector2(543, 361)
+collision_mask = 4
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("10_6eeyb")
+
+[node name="PowerIteams" parent="." instance=ExtResource("7_ivppe")]
+position = Vector2(225, 212)
+
+[connection signal="timeout" from="Room/EnemySpawner/Timer" to="Room/EnemySpawner" method="_on_timer_timeout"]
