@@ -646,10 +646,10 @@ position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_5h536")
 animation = &"front"
 autoplay = "front"
-frame_progress = 0.720455
+frame_progress = 0.0727713
 
 [node name="Arm" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -12)
+position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_3cm3d")
 animation = &"front_right2"
 autoplay = "front_right2"
@@ -659,7 +659,7 @@ position = Vector2(0, -14)
 sprite_frames = SubResource("SpriteFrames_wfq45")
 animation = &"front_right1"
 autoplay = "front_right1"
-frame_progress = 0.110755
+frame_progress = 0.139872
 
 [node name="Rat" type="Node2D" parent="."]
 visible = false
@@ -675,7 +675,6 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_kyr8i")
 
 [node name="Crosshair" type="Sprite2D" parent="."]
-visible = false
 z_index = 4
 z_as_relative = false
 texture_filter = 1
