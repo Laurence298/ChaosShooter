@@ -683,6 +683,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyr8i"]
+radius = 11.0
+height = 26.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_g6msb"]
 font_size = 25
@@ -719,8 +721,7 @@ rotation = 0.514872
 texture = ExtResource("2_05a5v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 20)
-rotation = 1.5708
+position = Vector2(1, 13)
 shape = SubResource("CapsuleShape2D_kyr8i")
 
 [node name="Crosshair" type="Sprite2D" parent="."]
