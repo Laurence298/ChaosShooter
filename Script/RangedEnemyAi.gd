@@ -3,7 +3,7 @@ extends CharacterBody2D
 enum EnemyState {IDLE_STATE, ATTACK_STATE,MOVEMENT_STATE,COLLISION}
 var current_state: EnemyState = EnemyState.MOVEMENT_STATE
 @onready var player := get_tree().get_first_node_in_group("player")
-@export var speed = 40;
+@export var speed = 30;
 
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 @onready var enemies := get_tree().get_nodes_in_group("enemy")
