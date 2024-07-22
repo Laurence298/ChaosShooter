@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var starting_room:bool = false
+@export var starting_room:bool = true
 
 @export var width_in_tiles:int = 0
 @export var height_in_tiles:int = 0
@@ -12,8 +12,8 @@ func _ready():
 	if starting_room == false:
 		$ColorRect.visible = true
 	else:
-		$ColorRect.visible = false
-	pass # Replace with function body.
+		$ColorRect.visible = true
+		enter_room()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

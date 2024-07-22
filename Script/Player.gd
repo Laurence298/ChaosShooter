@@ -130,12 +130,12 @@ func _process(delta):
 	
 	
 	if mouse_pos < self.global_position:
-		$Rat.scale.x = 1
-		$Rat.look_at(mouse_pos)
-		$Rat.rotation += deg_to_rad(180)
+		arm.scale.x = 1
+		arm.look_at(mouse_pos)
+		arm.rotation += deg_to_rad(180)
 	else:
-		$Rat.scale.x = -1
-		$Rat.look_at(mouse_pos)
+		arm.scale.x = -1
+		arm.look_at(mouse_pos)
 	#camera_2d.global_position = camera_2d.global_position.round()
 	
 	# flips drill legs and body and weapon accorreding to the direction

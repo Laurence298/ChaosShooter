@@ -25,10 +25,9 @@ script = ExtResource("1_e5dyd")
 environment = SubResource("Environment_k3g3d")
 
 [node name="Room" parent="." instance=ExtResource("2_nmk2p")]
-starting_room = true
 
 [node name="EnemySpawner" type="Node2D" parent="Room"]
-position = Vector2(653, 159)
+position = Vector2(485, 304)
 script = ExtResource("9_rykgk")
 
 [node name="Timer" type="Timer" parent="Room/EnemySpawner"]
@@ -36,7 +35,7 @@ wait_time = 5.0
 autostart = true
 
 [node name="Enemy" parent="Room" instance=ExtResource("8_aggf8")]
-position = Vector2(463, 540)
+position = Vector2(494, 180)
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("7_abgl2")]
 position = Vector2(433, 273)
@@ -47,7 +46,7 @@ zoom = Vector2(2, 2)
 script = ExtResource("10_6eeyb")
 
 [node name="PowerIteams" parent="." instance=ExtResource("7_ivppe")]
-position = Vector2(420, 502)
+position = Vector2(219, 197)
 firerate = 0.2
 recoil = 1500
 bullet_size = Vector2(2, 2)
