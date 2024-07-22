@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c60tvy3hgo56j" path="res://Scenes/player.tscn" id="7_abgl2"]
 [ext_resource type="PackedScene" uid="uid://c12dhf2dnrm6q" path="res://Scenes/EnemySpawner.tscn" id="7_e1w5x"]
 [ext_resource type="Script" path="res://Scenes/MenuHub.gd" id="7_pg6ue"]
+[ext_resource type="PackedScene" uid="uid://vgv1eqkdo6ju" path="res://room.tscn" id="7_rg305"]
 [ext_resource type="AudioStream" uid="uid://c21ogpey2tneq" path="res://assets/Robofunk.wav" id="7_sr0x6"]
 [ext_resource type="PackedScene" uid="uid://054im774ytgn" path="res://Scenes/Menus/WinMenu.tscn" id="8_wl0yv"]
 [ext_resource type="PackedScene" uid="uid://60b1hxcxvq3w" path="res://Scenes/Menus/PauseMenu.tscn" id="8_yhf1k"]
@@ -31,7 +32,7 @@ environment = SubResource("Environment_k3g3d")
 position = Vector2(10, -18)
 
 [node name="Enemy" parent="." instance=ExtResource("2_8de5i")]
-position = Vector2(494, 180)
+position = Vector2(561, 37)
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("7_abgl2")]
 position = Vector2(433, 273)
@@ -45,6 +46,7 @@ script = ExtResource("10_6eeyb")
 stream = ExtResource("7_sr0x6")
 autoplay = true
 
+<<<<<<< HEAD
 [node name="EnemySpawner" parent="." instance=ExtResource("7_e1w5x")]
 position = Vector2(479, 252)
 scale = Vector2(50, 25)
@@ -64,3 +66,5 @@ visible = false
 
 [connection signal="on_health_changed" from="Player" to="MenuHub" method="_on_player_on_health_changed"]
 [connection signal="on_heat_changed" from="Player" to="MenuHub" method="_on_player_on_heat_changed"]
+[node name="Room" parent="." instance=ExtResource("7_rg305")]
+position = Vector2(-422, -1820)
