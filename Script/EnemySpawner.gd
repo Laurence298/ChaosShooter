@@ -16,9 +16,12 @@ func _process(delta):
 
 
 func _on_timer_timeout():
+	print("not spawn")
 	if(enemycount <= maxspawnedEnemy):
+		print("spawn")
 		var randiEnemy = randi_range(1,4)
 		var new_enemy = null
+		enemycount += 1
 		if(randiEnemy % 2 == 0):
 			new_enemy = ENEMY.instantiate()
 		else:
@@ -30,5 +33,8 @@ func _on_timer_timeout():
 
 
 func _on_area_2d_body_entered(body):
-	$Timer.autostart = true
+	if body.is_in_group("player") :
+		$Timer.autostart = true
+		$Timer.start()
+		print("realease the beast")
 
