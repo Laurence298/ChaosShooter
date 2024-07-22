@@ -131,13 +131,7 @@ func _process(delta):
 	
 	
 	
-	if mouse_pos < self.global_position:
-		arm.scale.x = 1
-		arm.look_at(mouse_pos)
-		arm.rotation += deg_to_rad(180)
-	else:
-		arm.scale.x = -1
-		arm.look_at(mouse_pos)
+
 	#camera_2d.global_position = camera_2d.global_position.round()
 	
 	# flips drill legs and body and weapon accorreding to the direction
@@ -147,14 +141,35 @@ func _process(delta):
 			sprite_upper.play(upgrades["Body"]["BR"])
 			arm.play(upgrades["Weapon"]["BR"])
 			arm.z_index = 1
+			if mouse_pos < self.global_position:
+				arm.scale.x = -1
+				arm.look_at(mouse_pos)
+				arm.rotation += deg_to_rad(180)
+			else:
+				arm.scale.x = 1
+				arm.look_at(mouse_pos)
 		elif direction.x < 0:
 			sprite_upper.play(upgrades["Body"]["BL"])
 			arm.play(upgrades["Weapon"]["BL"])
 			arm.z_index = 1
+			if mouse_pos < self.global_position:
+				arm.scale.x = 1
+				arm.look_at(mouse_pos)
+				arm.rotation += deg_to_rad(180)
+			else:
+				arm.scale.x = -1
+				arm.look_at(mouse_pos)
 		else:
 			sprite_upper.play(upgrades["Body"]["BL"])
 			arm.play(upgrades["Weapon"]["BL"])
 			arm.z_index = 1
+			if mouse_pos < self.global_position:
+				arm.scale.x = 1
+				arm.look_at(mouse_pos)
+				arm.rotation += deg_to_rad(180)
+			else:
+				arm.scale.x = -1
+				arm.look_at(mouse_pos)
 	else:
 		if sprite_upper.animation == (upgrades["Body"]["BL"]):
 			sprite_upper.play(upgrades["Body"]["FL"])
@@ -169,13 +184,42 @@ func _process(delta):
 			sprite_upper.play(upgrades["Body"]["FR"])
 			arm.play(upgrades["Weapon"]["FR"])
 			arm.z_index = 0
+			if mouse_pos < self.global_position:
+				arm.scale.x = -1
+				arm.look_at(mouse_pos)
+				arm.rotation += deg_to_rad(180)
+			else:
+				arm.scale.x = 1
+				arm.look_at(mouse_pos)
 		elif direction.x < 0:
 			sprite_lower.scale.x = -1
 			sprite_upper.play(upgrades["Body"]["FL"])
 			arm.play(upgrades["Weapon"]["FL"])
 			arm.z_index = 0
-		#if direction.x == 0 and direction.y == 0:
-			#sprite_upper.stop()
+			if mouse_pos < self.global_position:
+				arm.scale.x = 1
+				arm.look_at(mouse_pos)
+				arm.rotation += deg_to_rad(180)
+			else:
+				arm.scale.x = -1
+				arm.look_at(mouse_pos)
+		if direction.x == 0:
+			if sprite_upper.animation == (upgrades["Body"]["FR"]):
+				if mouse_pos < self.global_position:
+					arm.scale.x = -1
+					arm.look_at(mouse_pos)
+					arm.rotation += deg_to_rad(180)
+				else:
+					arm.scale.x = 1
+					arm.look_at(mouse_pos)
+			if sprite_upper.animation == (upgrades["Body"]["FL"]):
+				if mouse_pos < self.global_position:
+					arm.scale.x = 1
+					arm.look_at(mouse_pos)
+					arm.rotation += deg_to_rad(180)
+				else:
+					arm.scale.x = -1
+					arm.look_at(mouse_pos)
 func _input(event):
 	match equiped_Weapon:
 		PowerUp.WeaponType.SMALL_GUN:

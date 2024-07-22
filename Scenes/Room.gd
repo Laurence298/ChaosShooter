@@ -1,5 +1,5 @@
 extends Node2D
-
+"""
 @export var starting_room:bool = true
 
 @export var width_in_tiles:int = 0
@@ -22,3 +22,4 @@ func _process(delta):
 	
 func enter_room():
 	$AnimationPlayer.play("fade_out")
+"""
