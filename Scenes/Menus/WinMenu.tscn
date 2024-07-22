@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://054im774ytgn"]
+[gd_scene load_steps=4 format=3 uid="uid://054im774ytgn"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/WinMenu.gd" id="1_b6r4a"]
 [ext_resource type="Texture2D" uid="uid://cck0t7xd0b4h4" path="res://assets/doom-bigupper-you-tamed-the-chaos.png" id="2_1lw5k"]
+[ext_resource type="Texture2D" uid="uid://bowh6ly1s4ht6" path="res://assets/doom-bigupper-reset.png" id="3_vbsce"]
 
 [node name="WinMenu" type="Control"]
 layout_mode = 3
@@ -32,5 +33,10 @@ offset_top = 289.0
 offset_right = 604.0
 offset_bottom = 362.0
 text = "Reset"
+
+[node name="Doom-bigupper-reset" type="Sprite2D" parent="."]
+position = Vector2(483, 335)
+scale = Vector2(0.5, 0.506494)
+texture = ExtResource("3_vbsce")
 
 [connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
