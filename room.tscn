@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://ds7d4qkp042wf" path="res://assets/rustFurniture.png" id="3_qx4pq"]
 [ext_resource type="Texture2D" uid="uid://256aellyh8cx" path="res://assets/rustSmallobjects.png" id="4_j6frt"]
 [ext_resource type="Texture2D" uid="uid://dke50ng51dks" path="res://assets/rustRocktiles.png" id="5_ykipf"]
-[ext_resource type="PackedScene" uid="uid://c12dhf2dnrm6q" path="res://Scenes/EnemySpawner.tscn" id="6_60iqm"]
-[ext_resource type="PackedScene" uid="uid://c0fk5yj57rnyo" path="res://Scenes/randomize_area.tscn" id="7_t6bot"]
+[ext_resource type="PackedScene" uid="uid://d07oeitxgo5ky" path="res://Scenes/EnemySpawner.tscn" id="6_60iqm"]
+[ext_resource type="PackedScene" uid="uid://cghl48d21ie7a" path="res://Scenes/randomize_area.tscn" id="7_t6bot"]
 [ext_resource type="Texture2D" uid="uid://dwo8bliyfgevc" path="res://assets/rusttiles.png" id="8_4pm48"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_82cls"]
@@ -450,7 +450,7 @@ _data = {
 size = Vector2(111, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejl1q"]
-size = Vector2(102, 91)
+size = Vector2(123.688, 117.047)
 
 [node name="Room" type="Node2D"]
 y_sort_enabled = true
@@ -548,5 +548,29 @@ shape = SubResource("RectangleShape2D_iap6w")
 position = Vector2(1089, 1565)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RandomizeArea"]
-position = Vector2(7, 49.5)
+position = Vector2(466, -113)
+shape = SubResource("RectangleShape2D_ejl1q")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RandomizeArea"]
+position = Vector2(199, -299)
+shape = SubResource("RectangleShape2D_ejl1q")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RandomizeArea"]
+position = Vector2(454.156, -770.523)
+shape = SubResource("RectangleShape2D_ejl1q")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="RandomizeArea"]
+position = Vector2(872, -499)
+shape = SubResource("RectangleShape2D_ejl1q")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="RandomizeArea"]
+position = Vector2(670, -469)
+shape = SubResource("RectangleShape2D_ejl1q")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="RandomizeArea"]
+position = Vector2(1435, 8)
+shape = SubResource("RectangleShape2D_ejl1q")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="RandomizeArea"]
+position = Vector2(-2, 47)
 shape = SubResource("RectangleShape2D_ejl1q")
