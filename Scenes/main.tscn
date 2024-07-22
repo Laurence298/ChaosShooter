@@ -42,10 +42,11 @@ position = Vector2(543, 361)
 collision_mask = 4
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 script = ExtResource("10_6eeyb")
 
 [node name="PowerIteams" parent="." instance=ExtResource("7_ivppe")]
-position = Vector2(225, 212)
+position = Vector2(378, 178)
 firerate = 0.2
 recoil = 1500
 bullet_size = Vector2(2, 2)

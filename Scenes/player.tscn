@@ -727,6 +727,7 @@ shape = SubResource("CapsuleShape2D_kyr8i")
 z_index = 4
 z_as_relative = false
 texture_filter = 1
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_e5nnj")
 metadata/_edit_lock_ = true
 
