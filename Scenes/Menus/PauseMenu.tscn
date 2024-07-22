@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://l5qcety4lwe8" path="res://assets/chex-small-paused.png" id="2_bpy4m"]
 
 [node name="PauseMenu" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
