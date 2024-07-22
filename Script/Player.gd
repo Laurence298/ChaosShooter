@@ -52,6 +52,8 @@ var upgrades = {
 
 signal  WeaponFired
 signal  on_health_changed(health)
+signal  on_energy_changed(energy)
+signal  on_heat_changed(heat)
 const MAX_HEALTH : int = 100
 var health: int = MAX_HEALTH
 
@@ -80,7 +82,7 @@ var extra_velocity:Vector2 = Vector2(0,0)
 
 func _ready():
 	#anim_sprite.play("default")
-
+	on_health_changed.emit(health)
 	randomize_stats();
 	can_fire = true;
 	sprite_upper.play(upgrades["Body"]["FR"])

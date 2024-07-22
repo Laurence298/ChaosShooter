@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgmem5jdwj6t5"]
+[gd_scene load_steps=3 format=3 uid="uid://c3rcl3erqgiq3"]
 
 [ext_resource type="PackedScene" uid="uid://dnky713twoylc" path="res://Scenes/Powerups/SmallGun.tscn" id="1_ljqs3"]
 [ext_resource type="Texture2D" uid="uid://cj7v4i0k03op3" path="res://assets/batterypickup.png" id="2_pmadv"]

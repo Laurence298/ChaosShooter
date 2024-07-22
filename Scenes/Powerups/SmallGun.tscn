@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cm05f6pmfsh2w"]
+[gd_scene load_steps=4 format=3 uid="uid://dnky713twoylc"]
 
 [ext_resource type="Script" path="res://Script/upgrades/CollectableItems.gd" id="1_oseko"]
+[ext_resource type="Texture2D" uid="uid://c3ir7pu6blyts" path="res://assets/rustGun.png" id="2_wx45k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8sgnp"]
 
@@ -17,6 +18,7 @@ scale = Vector2(1.555, 1.555)
 shape = SubResource("RectangleShape2D_8sgnp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wx45k")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

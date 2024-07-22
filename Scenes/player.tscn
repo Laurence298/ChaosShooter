@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://c60tvy3hgo56j"]
+[gd_scene load_steps=97 format=3 uid="uid://c60tvy3hgo56j"]
 
 [ext_resource type="Script" path="res://Script/Player.gd" id="1_jikto"]
 [ext_resource type="Texture2D" uid="uid://qvotkkj6htnr" path="res://assets/rustBotbody.png" id="2_2rhe1"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://uw5nf708eryx" path="res://assets/rustBotlegs.png" id="4_n7nnh"]
 [ext_resource type="Script" path="res://Script/Label.gd" id="5_a7yqq"]
 [ext_resource type="AudioStream" uid="uid://dfedlq7qbv6uv" path="res://assets/untitled.ogg" id="7_o2vm6"]
+[ext_resource type="Script" path="res://Scenes/healthVisual.gd" id="8_pptvu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w86yq"]
 atlas = ExtResource("2_d407g")
@@ -747,18 +748,31 @@ offset_right = 235.0
 offset_bottom = 76.0
 color = Color(0, 0.489636, 0.853661, 1)
 
-[node name="Label2" type="Label" parent="CanvasLayer"]
+[node name="Label3" type="Label" parent="CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = -46.0
-offset_right = 153.0
-offset_bottom = -2.0
+offset_left = 12.0
+offset_top = -48.0
+offset_right = 159.0
+offset_bottom = -4.0
 grow_vertical = 0
 text = "FPS: "
 label_settings = SubResource("LabelSettings_g6msb")
 script = ExtResource("5_a7yqq")
+
+[node name="health visual" type="Label" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 138.0
+offset_top = -49.0
+offset_right = 285.0
+offset_bottom = -5.0
+grow_vertical = 0
+text = "FPS: "
+label_settings = SubResource("LabelSettings_g6msb")
+script = ExtResource("8_pptvu")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 2
@@ -772,6 +786,30 @@ grow_vertical = 0
 text = "Energy"
 label_settings = SubResource("LabelSettings_g6msb")
 
+[node name="energy" type="Label" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 414.0
+offset_top = -59.0
+offset_right = 561.0
+offset_bottom = -15.0
+grow_vertical = 0
+text = "FPS: "
+label_settings = SubResource("LabelSettings_g6msb")
+
+[node name="heatGauge" type="Label" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 276.0
+offset_top = -54.0
+offset_right = 423.0
+offset_bottom = -10.0
+grow_vertical = 0
+text = "FPS: "
+label_settings = SubResource("LabelSettings_g6msb")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_o2vm6")
 
@@ -779,5 +817,6 @@ stream = ExtResource("7_o2vm6")
 
 [node name="HeartTick" type="Timer" parent="."]
 
+[connection signal="on_health_changed" from="." to="CanvasLayer/health visual" method="_on_character_body_2d_on_health_changed"]
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
 [connection signal="timeout" from="HeartTick" to="." method="_on_heart_tick_timeout"]
