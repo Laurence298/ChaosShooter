@@ -12,4 +12,5 @@ func _input(event):
 		is_paused = !is_paused # Toggle the pause state
 		self.visible = is_paused
 		get_tree().paused = is_paused
+		print("test")
 	pass
