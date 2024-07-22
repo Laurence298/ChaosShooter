@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://d1uiws5ke56"]
+
+[node name="PlaceHolder" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 380.0
+offset_top = 215.0
+offset_right = 549.0
+offset_bottom = 238.0
+text = "We're in the first level
+"

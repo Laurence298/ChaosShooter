@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5iu7um6i3eei"]
+[gd_scene load_steps=6 format=3 uid="uid://b5iu7um6i3eei"]
 
 [ext_resource type="Script" path="res://Script/MainMenu.gd" id="1_048hv"]
 [ext_resource type="Texture2D" uid="uid://ciy7h14ntrvyq" path="res://assets/zdoom-console-robochaos.png" id="1_bcc32"]
 [ext_resource type="Texture2D" uid="uid://b7ceudppvjfpr" path="res://assets/zdoom-console-start.png" id="2_o2dqa"]
+[ext_resource type="Texture2D" uid="uid://x473urks4nre" path="res://assets/zdoom-console-quit.png" id="4_40ciw"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_d6w84"]
 
@@ -17,10 +18,10 @@ script = ExtResource("1_048hv")
 
 [node name="MainMenuBlock" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = -3.0
-offset_top = -2.0
-offset_right = 957.0
-offset_bottom = 511.0
+offset_left = -1.0
+offset_top = -4.0
+offset_right = 959.0
+offset_bottom = 509.0
 color = Color(0.568973, 0.568973, 0.568973, 1)
 
 [node name="StartButton" type="Button" parent="."]
@@ -34,6 +35,17 @@ text = "
 "
 icon = SubResource("CanvasTexture_d6w84")
 
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 348.0
+offset_top = 286.0
+offset_right = 578.0
+offset_bottom = 352.0
+text = "
+
+"
+icon = SubResource("CanvasTexture_d6w84")
+
 [node name="Title" type="Sprite2D" parent="."]
 position = Vector2(479, 106)
 texture = ExtResource("1_bcc32")
@@ -42,3 +54,11 @@ texture = ExtResource("1_bcc32")
 position = Vector2(463, 222)
 scale = Vector2(0.494949, 0.510101)
 texture = ExtResource("2_o2dqa")
+
+[node name="QuitText" type="Sprite2D" parent="."]
+position = Vector2(459, 323)
+scale = Vector2(0.530952, 0.537879)
+texture = ExtResource("4_40ciw")
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
