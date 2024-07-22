@@ -1,64 +1,46 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwxko5gcwd3w4"]
+[gd_scene load_steps=9 format=3 uid="uid://dwxko5gcwd3w4"]
 
 [ext_resource type="Script" path="res://Script/EnemyAI.gd" id="1_kknp0"]
 [ext_resource type="Texture2D" uid="uid://dx14bnkfvwywf" path="res://assets/rustEnemy.png" id="2_es0e6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e3tyi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_y624n"]
 atlas = ExtResource("2_es0e6")
-region = Rect2(64, 0, 64, 64)
+region = Rect2(384, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wbucv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_406vh"]
 atlas = ExtResource("2_es0e6")
-region = Rect2(128, 0, 64, 64)
+region = Rect2(448, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h1tbj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip0jl"]
 atlas = ExtResource("2_es0e6")
-region = Rect2(192, 0, 64, 64)
+region = Rect2(512, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7gy7b"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ro1wa"]
 atlas = ExtResource("2_es0e6")
-region = Rect2(256, 0, 64, 64)
+region = Rect2(576, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2mlmu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e3tyi")
+"texture": SubResource("AtlasTexture_y624n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wbucv")
+"texture": SubResource("AtlasTexture_406vh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h1tbj")
+"texture": SubResource("AtlasTexture_ip0jl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7gy7b")
+"texture": SubResource("AtlasTexture_ro1wa")
 }],
 "loop": true,
 "name": &"default",
 "speed": 10.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1dc3d"]
-atlas = ExtResource("2_es0e6")
-region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_7sftu"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1dc3d")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n18q4"]
-size = Vector2(20.375, 41.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r708n"]
-size = Vector2(23, 20)
+size = Vector2(39, 25)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
@@ -69,13 +51,10 @@ speed = 50
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2mlmu")
 autoplay = "default"
-frame_progress = 0.895754
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
-sprite_frames = SubResource("SpriteFrames_7sftu")
+frame_progress = 0.117473
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.8125, 3.25)
+position = Vector2(0.5, 11.5)
 shape = SubResource("RectangleShape2D_n18q4")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
@@ -92,11 +71,6 @@ wait_time = 2.0
 
 [node name="PathTimer" type="Timer" parent="."]
 autostart = true
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_r708n")
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="PathTimer" to="." method="_on_timer_timeout"]
