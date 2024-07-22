@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ci2vhw0jtlnbm"]
+[gd_scene load_steps=5 format=3 uid="uid://ci2vhw0jtlnbm"]
 
 [ext_resource type="Script" path="res://Script/MainMenu.gd" id="1_c58rw"]
 [ext_resource type="Texture2D" uid="uid://ciy7h14ntrvyq" path="res://assets/zdoom-console-robochaos.png" id="2_46mdb"]
 [ext_resource type="Texture2D" uid="uid://b7ceudppvjfpr" path="res://assets/zdoom-console-start.png" id="3_rp50o"]
+[ext_resource type="Texture2D" uid="uid://x473urks4nre" path="res://assets/zdoom-console-quit.png" id="4_oc1ah"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -15,8 +16,8 @@ script = ExtResource("1_c58rw")
 
 [node name="MainMenuBlock" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 2.0
-offset_right = 962.0
+offset_left = -3.0
+offset_right = 957.0
 offset_bottom = 513.0
 color = Color(0.568973, 0.568973, 0.568973, 1)
 
@@ -46,6 +47,11 @@ texture = ExtResource("2_46mdb")
 position = Vector2(472, 228)
 scale = Vector2(0.560606, 0.580808)
 texture = ExtResource("3_rp50o")
+
+[node name="Zdoom-console-quit" type="Sprite2D" parent="."]
+position = Vector2(468, 315)
+scale = Vector2(0.480952, 0.429293)
+texture = ExtResource("4_oc1ah")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
