@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc7wetdqhxc0a"
-path="res://.godot/imported/heatbar.png-9e80b63208509cd4bdc84f5707c34991.ctex"
+uid="uid://cck0t7xd0b4h4"
+path="res://.godot/imported/doom-bigupper-you-tamed-the-chaos.png-23bf6f226b0fb681ea837c102cd7b806.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/heatbar.png"
-dest_files=["res://.godot/imported/heatbar.png-9e80b63208509cd4bdc84f5707c34991.ctex"]
+source_file="res://assets/doom-bigupper-you-tamed-the-chaos.png"
+dest_files=["res://.godot/imported/doom-bigupper-you-tamed-the-chaos.png-23bf6f226b0fb681ea837c102cd7b806.ctex"]
 
 [params]
 

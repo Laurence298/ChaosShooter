@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://054im774ytgn"]
+
+[ext_resource type="Script" path="res://Scenes/Menus/WinMenu.gd" id="1_b6r4a"]
+[ext_resource type="Texture2D" uid="uid://cck0t7xd0b4h4" path="res://assets/doom-bigupper-you-tamed-the-chaos.png" id="2_1lw5k"]
+
+[node name="WinMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b6r4a")
+
+[node name="WinMenuBlock" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -3.0
+offset_right = 965.0
+offset_bottom = 510.0
+color = Color(0.568973, 0.568973, 0.568973, 1)
+
+[node name="WinMenuText" type="Sprite2D" parent="."]
+position = Vector2(495, 217)
+scale = Vector2(0.49815, 0.766234)
+texture = ExtResource("2_1lw5k")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 289.0
+offset_right = 604.0
+offset_bottom = 362.0
+text = "Reset"
