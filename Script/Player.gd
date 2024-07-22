@@ -290,9 +290,10 @@ func randomize_stats():
 	set_combatStatus(randomstats)
 	
 func  takeDamage(damage):
-	health -= damage
-	print("im hit hit i say")
-	on_health_changed.emit(health)
+		health -= damage
+		on_health_changed.emit(health)
+		if(health < 0):
+			hide()
 	
 func _on_fire_rate_timer_timeout():
 	can_fire = true

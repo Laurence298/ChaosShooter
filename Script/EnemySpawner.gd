@@ -1,9 +1,12 @@
 extends Node2D
 
 const ENEMY = preload("res://Scenes/Enemy.tscn")
-
+const RANGEDENEMY = preload("res://Scenes/RangedEnemy.tscn")
+@export var maxspawnedEnemy: int = 3
+@export var enemycount: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	pass # Replace with function body.
 
 
@@ -13,8 +16,19 @@ func _process(delta):
 
 
 func _on_timer_timeout():
-	var new_enemy = ENEMY.instantiate()
-	new_enemy.global_position = self.global_position
-	new_enemy.modulate = Color.from_hsv(randf(), 1.0 , 1.0)
-	get_parent().add_child(new_enemy)
-	pass # Replace with function body.
+	if(enemycount <= maxspawnedEnemy):
+		var randiEnemy = randi_range(1,4)
+		var new_enemy = null
+		if(randiEnemy % 2 == 0):
+			new_enemy = ENEMY.instantiate()
+		else:
+			new_enemy = RANGEDENEMY.instantiate()
+		new_enemy.global_position = self.global_position
+		new_enemy.modulate = Color.from_hsv(randf(), 1.0 , 1.0)
+		get_parent().add_child(new_enemy)
+
+
+
+func _on_area_2d_body_entered(body):
+	$Timer.autostart = true
+

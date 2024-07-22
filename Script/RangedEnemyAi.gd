@@ -88,7 +88,7 @@ func rangedAttack():
 		direction = (player.position - self.position).normalized()
 		var new_bullet = BULLET.instantiate()
 		get_tree().current_scene.add_child(new_bullet)
-		BulletManager.create_bullet(self,BulletManager.CollisionLayer.PLAYER, direction * bullet_speed, 5, self.position)
+		BulletManager.create_bulletAi(self,BulletManager.CollisionLayer.PLAYER, direction * bullet_speed, 5, self.position)
 		$AttackTimer.start()
 	
 		current_state = EnemyState.MOVEMENT_STATE
