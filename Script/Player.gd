@@ -3,6 +3,10 @@ class_name Player
 
 @onready var crosshair = $Crosshair
 @onready var energy_bar = $CanvasLayer/EnergyBar
+@onready var health_bar = $"CanvasLayer/healthbar"
+@onready var heat_bar = $CanvasLayer/heat_bar
+
+
 #@onready var camera_2d = $Camera2D
 #@onready var anim_sprite = $AnimSprite
 
@@ -53,6 +57,7 @@ var upgrades = {
 "Legs": drill,
 }
 
+#endregion
 #body modification Status
 
 signal  WeaponFired
@@ -62,11 +67,10 @@ signal  on_heat_changed(heat)
 const MAX_HEALTH : int = 100
 var health: int = MAX_HEALTH
 
-const max_heat_gauge: float= 0
-var heat_gauge: float = max_heat_gauge
+const max_heat_gauge: float= 100
+var heat_gauge: float = 0
 #body modification
 
-#endregion
 
 @export var curretbodymodification: PowerUp.body_modification
 var vec_to_crosshair
@@ -84,7 +88,6 @@ var knockBack: float;
 var extra_velocity:Vector2 = Vector2(0,0)
 
 func _ready():
-	randomize_upgrades()
 	#anim_sprite.play("default")
 	on_health_changed.emit(health)
 	on_energy_changed.emit(energy)
@@ -99,37 +102,27 @@ func _physics_process(delta):
 
 	var direction = Input.get_vector("left", "right", "up", "down")
 	if direction == Vector2(0,0):
-		print("no input movement")
-		pass
-	velocity = Vector2.ZERO
-	
-	#if extra_velocity.length() < 100:
-	#	velocity = direction.normalized() * SPEED
-	
-	#velocity = direction.normalized() * SPEED
-	
-	direction = direction.normalized() * SPEED
-	
-	var vel_dif = direction.dot(extra_velocity.normalized())
-	if vel_dif < 0 && extra_velocity.length() > 100:
-		direction -= vel_dif*extra_velocity.normalized()
-	
-	velocity += direction
-	
-	velocity += extra_velocity
-	extra_velocity = extra_velocity.lerp(Vector2.ZERO, delta * 12)
-	
-	
-	
+		velocity += Vector2(1, 1)
+	else:
+		velocity = Vector2.ZERO
+		
+		#if extra_velocity.length() < 100:
+		#	velocity = direction.normalized() * SPEED
+		
+		#velocity = direction.normalized() * SPEED
+		
+		direction = direction.normalized() * SPEED
+		
+		var vel_dif = direction.dot(extra_velocity.normalized())
+		if vel_dif < 0 && extra_velocity.length() > 100:
+			direction -= vel_dif*extra_velocity.normalized()
+		
+		velocity += direction
+		
+		velocity += extra_velocity
+		extra_velocity = extra_velocity.lerp(Vector2.ZERO, delta * 12)
 	move_and_slide()
 	#self.position = position.round()
-
-func randomize_upgrades():
-	upgrades = {
-	"Body": body_upgrades.pick_random(), 
-	"Weapon": arm_upgrades.pick_random(),
-	"Legs": leg_upgrades.pick_random(),
-	}
 
 func _process(delta):
 	crosshair.position = get_local_mouse_position()
@@ -137,6 +130,14 @@ func _process(delta):
 	
 	energy = clamp(energy+10*delta, 0, 100)
 	energy_bar.scale.x = energy/MAX_ENERGY
+	
+	health_bar.scale.x = health/MAX_HEALTH
+	
+	heat_bar.scale.x = heat_gauge/max_heat_gauge
+	if health == 0:
+		print("dead")
+	if heat_gauge == 100:
+		print("Overloarded!")
 	
 	var mouse_pos = get_global_mouse_position()
 	#camera_2d.offset.x = round((mouse_pos.x - global_position.x) / (1920.0 / 2.0) * 150)
@@ -302,10 +303,16 @@ func randomize_stats():
 	randomstats.KnockBackStreagth = randi_range(100, 200)
 	set_combatStatus(randomstats)
 	
+<<<<<<< Updated upstream
 func  takeDamage(damage, whoattacked):
 		health -= damage
 		health = clamp(health, 0 ,MAX_HEALTH)
 		on_health_changed.emit(health, whoattacked)
+=======
+func  takeDamage(damage):
+		health = clamp(health - damage, 0 ,MAX_HEALTH)
+		on_health_changed.emit(health)
+>>>>>>> Stashed changes
 		if(health <= 0):
 			hide()
 func hit(hitevent:HitEvent):
@@ -319,22 +326,20 @@ func _on_fire_rate_timer_timeout():
 func _on_weapon_fired():
 	match curretbodymodification:
 		PowerUp.body_modification.HEART:
-			health -= 1
+			health = clamp(health -10, 0 ,MAX_HEALTH)
 			print("heart hurt")
 			on_health_changed.emit(health)
 		PowerUp.body_modification.POWERSOURCE:
-			heat_gauge += 10
+			heat_gauge = clamp(heat_gauge +30, 0 ,max_heat_gauge)
 			print("fire hurt")
 			on_heat_changed.emit(heat_gauge)
 
 
 func _on_recover_health_timeout():
-	health += 1
-	health = clamp(health, 0 ,MAX_HEALTH)
+	health = clamp(health +1, 0 ,MAX_HEALTH)
 	on_health_changed.emit(health)
 
 
 func _on_heat_cooldown_timeout():
-	heat_gauge -= 1
-	heat_gauge = clamp(heat_gauge, 0 ,max_heat_gauge)
+	heat_gauge = clamp(heat_gauge -1, 0 ,max_heat_gauge)
 	on_heat_changed.emit(heat_gauge)
