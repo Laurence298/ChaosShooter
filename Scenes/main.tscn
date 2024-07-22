@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Script/main.gd" id="1_e5dyd"]
 [ext_resource type="PackedScene" uid="uid://vgv1eqkdo6ju" path="res://room.tscn" id="2_nmk2p"]
 [ext_resource type="PackedScene" uid="uid://c60tvy3hgo56j" path="res://Scenes/player.tscn" id="7_abgl2"]
-[ext_resource type="PackedScene" uid="uid://dnky713twoylc" path="res://Scenes/Powerups/SmallGun.tscn" id="7_ivppe"]
+[ext_resource type="PackedScene" uid="uid://dnky713twoylc" path="res://Scenes/Powerups/big_gun.tscn" id="7_ivppe"]
 [ext_resource type="PackedScene" uid="uid://dwxko5gcwd3w4" path="res://Scenes/Enemy.tscn" id="8_aggf8"]
 [ext_resource type="Script" path="res://Script/EnemySpawner.gd" id="9_rykgk"]
 [ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="10_6eeyb"]
