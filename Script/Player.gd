@@ -10,7 +10,7 @@ class_name Player
 @onready var sprite_upper = $SpriteUpper
 @onready var arm = $Arm
 @onready var sprite_lower = $SpriteLower
-
+var is_paused := false
 var heart = {
 	"BL": "back_left1",
 	"BR": "back_right1", 
@@ -221,6 +221,15 @@ func _process(delta):
 					arm.scale.x = -1
 					arm.look_at(mouse_pos)
 func _input(event):
+	if(event.is_action_pressed("esc")):
+		if is_paused:
+			$CanvasLayer/PauseMenu.hide()
+			Engine.time_scale = 1
+		else:
+			$CanvasLayer/PauseMenu.show()
+			Engine.time_scale = 0
+	is_paused = !is_paused
+	
 	match equiped_Weapon:
 		PowerUp.WeaponType.SMALL_GUN:
 			if event.is_action_pressed("shoot") && can_fire:
