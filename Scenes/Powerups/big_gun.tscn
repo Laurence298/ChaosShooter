@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjtvb6piq4gjw"]
+[gd_scene load_steps=2 format=3 uid="uid://cbfc1v7raua2n"]
 
-[ext_resource type="PackedScene" uid="uid://dnky713twoylc" path="res://Scenes/Powerups/SmallGun.tscn" id="1_i7vae"]
+[ext_resource type="PackedScene" uid="uid://cm05f6pmfsh2w" path="res://Scenes/Powerups/SmallGun.tscn" id="1_i7vae"]
 
 [node name="BIG_GUN" instance=ExtResource("1_i7vae")]
 firerate = 0.7
