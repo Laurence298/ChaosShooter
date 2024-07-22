@@ -755,13 +755,27 @@ offset_right = 235.0
 offset_bottom = 76.0
 color = Color(0, 0.489636, 0.853661, 1)
 
+[node name="Label3" type="Label" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -48.0
+offset_right = 159.0
+offset_bottom = -4.0
+grow_vertical = 0
+text = "FPS: "
+label_settings = SubResource("LabelSettings_g6msb")
+script = ExtResource("5_a7yqq")
+
 [node name="health visual" type="Label" parent="CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 120.0
-offset_top = -44.0
-offset_right = 267.0
+offset_left = 138.0
+offset_top = -49.0
+offset_right = 285.0
+offset_bottom = -5.0
 grow_vertical = 0
 text = "FPS: "
 label_settings = SubResource("LabelSettings_g6msb")
@@ -779,13 +793,27 @@ grow_vertical = 0
 text = "Energy"
 label_settings = SubResource("LabelSettings_g6msb")
 
+[node name="energy" type="Label" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 414.0
+offset_top = -59.0
+offset_right = 561.0
+offset_bottom = -15.0
+grow_vertical = 0
+text = "FPS: "
+label_settings = SubResource("LabelSettings_g6msb")
+script = ExtResource("9_4pyfx")
+
 [node name="heatGauge" type="Label" parent="CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 329.0
-offset_top = -44.0
-offset_right = 476.0
+offset_left = 276.0
+offset_top = -54.0
+offset_right = 423.0
+offset_bottom = -10.0
 grow_vertical = 0
 text = "FPS: "
 label_settings = SubResource("LabelSettings_g6msb")
@@ -811,6 +839,7 @@ autostart = true
 [node name="HeatCooldown" type="Timer" parent="."]
 
 [connection signal="WeaponFired" from="." to="." method="_on_weapon_fired"]
+[connection signal="on_energy_changed" from="." to="CanvasLayer/energy" method="_on_character_body_2d_on_energy_changed"]
 [connection signal="on_health_changed" from="." to="CanvasLayer/health visual" method="_on_character_body_2d_on_health_changed"]
 [connection signal="on_heat_changed" from="." to="CanvasLayer/heatGauge" method="_on_character_body_2d_on_heat_changed"]
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
