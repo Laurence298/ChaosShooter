@@ -10,7 +10,7 @@ class_name Player
 @onready var sprite_upper = $SpriteUpper
 @onready var arm = $Arm
 @onready var sprite_lower = $SpriteLower
-
+var is_paused := false
 var heart = {
 	"BL": "back_left1",
 	"BR": "back_right1", 
@@ -221,6 +221,15 @@ func _process(delta):
 					arm.scale.x = -1
 					arm.look_at(mouse_pos)
 func _input(event):
+	if(event.is_action_pressed("esc")):
+		if is_paused:
+			$CanvasLayer/PauseMenu.hide()
+			Engine.time_scale = 1
+		else:
+			$CanvasLayer/PauseMenu.show()
+			Engine.time_scale = 0
+	is_paused = !is_paused
+	
 	match equiped_Weapon:
 		PowerUp.WeaponType.SMALL_GUN:
 			if event.is_action_pressed("shoot") && can_fire:
@@ -291,17 +300,20 @@ func randomize_stats():
 	
 func  takeDamage(damage):
 		health -= damage
+		health = clamp(health, 0 ,MAX_HEALTH)
 		on_health_changed.emit(health)
-		if(health < 0):
+		if(health <= 0):
 			hide()
-	
+func hit(hitevent:HitEvent):
+	takeDamage(hitevent.damage)
+	return
 func _on_fire_rate_timer_timeout():
 	can_fire = true
 
 
 
 func _on_weapon_fired():
-	match equiped_Weapon:
+	match curretbodymodification:
 		PowerUp.body_modification.HEART:
 			health -= 1
 			print("heart hurt")
@@ -310,3 +322,15 @@ func _on_weapon_fired():
 			heat_gauge += 10
 			print("fire hurt")
 			on_heat_changed.emit(heat_gauge)
+
+
+func _on_recover_health_timeout():
+	health += 1
+	health = clamp(health, 0 ,MAX_HEALTH)
+	on_health_changed.emit(health)
+
+
+func _on_heat_cooldown_timeout():
+	heat_gauge -= 1
+	heat_gauge = clamp(heat_gauge, 0 ,max_heat_gauge)
+	on_heat_changed.emit(heat_gauge)
