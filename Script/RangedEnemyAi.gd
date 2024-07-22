@@ -3,12 +3,13 @@ extends CharacterBody2D
 enum EnemyState {IDLE_STATE, ATTACK_STATE,MOVEMENT_STATE,COLLISION}
 var current_state: EnemyState = EnemyState.MOVEMENT_STATE
 @onready var player := get_tree().get_first_node_in_group("player")
-@export var speed = 20;
+@export var speed = 40;
 
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 @onready var enemies := get_tree().get_nodes_in_group("enemy")
 @export var min_Distance = 3
 const BULLET = preload("res://Scenes/bullet.tscn")
+@onready var gun_sprite = $Sprite2D/AnimatedSprite2D
 
 
 var extra_velocity = Vector2.ZERO
@@ -27,6 +28,10 @@ func _ready():
 	direction = player.position - self.position 
 	pass # Replace with function body.
 
+func _process(delta):
+	var player_pos = player.position
+	if player_pos:
+		gun_sprite.look_at(player_pos)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -65,8 +70,12 @@ func _physics_process(delta):
 
 func DirectionProcess(delta):
 	#move towards the player until there close enough
-	if(global_position.distance_to(player.global_position) > 250):
+	if(global_position.distance_to(player.global_position) > 100):
 		var next_position = nav_agent.get_next_path_position()
+		var dir = to_local(next_position).normalized()
+		velocity = dir * speed
+	if(global_position.distance_to(player.global_position) < 100):
+		var next_position = -nav_agent.get_next_path_position()
 		var dir = to_local(next_position).normalized()
 		velocity = dir * speed
 	
