@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwxko5gcwd3w4"]
+[gd_scene load_steps=10 format=3 uid="uid://dwxko5gcwd3w4"]
 
 [ext_resource type="Script" path="res://Script/EnemyAI.gd" id="1_kknp0"]
 [ext_resource type="Texture2D" uid="uid://dx14bnkfvwywf" path="res://assets/rustEnemy.png" id="2_es0e6"]
@@ -42,6 +42,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n18q4"]
 size = Vector2(39, 25)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqsqo"]
+size = Vector2(49, 38)
+
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 y_sort_enabled = true
 collision_layer = 2
@@ -73,5 +76,13 @@ wait_time = 2.0
 [node name="PathTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 9)
+shape = SubResource("RectangleShape2D_wqsqo")
+debug_color = Color(0.656548, 0.436824, 0.723931, 0.42)
+
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="PathTimer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
