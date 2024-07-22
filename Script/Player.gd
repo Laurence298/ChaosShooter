@@ -303,16 +303,12 @@ func randomize_stats():
 	randomstats.KnockBackStreagth = randi_range(100, 200)
 	set_combatStatus(randomstats)
 	
-<<<<<<< Updated upstream
-func  takeDamage(damage, whoattacked):
-		health -= damage
-		health = clamp(health, 0 ,MAX_HEALTH)
-		on_health_changed.emit(health, whoattacked)
-=======
-func  takeDamage(damage):
+
+
+func takeDamage(damage, whoattacked):
 		health = clamp(health - damage, 0 ,MAX_HEALTH)
 		on_health_changed.emit(health)
->>>>>>> Stashed changes
+		on_health_changed.emit(health, whoattacked)
 		if(health <= 0):
 			hide()
 func hit(hitevent:HitEvent):
