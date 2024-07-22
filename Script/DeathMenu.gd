@@ -12,7 +12,7 @@ func _on_gun_death():
 	gundeath.show = true	
 	
 func _on_dog_death():
-	dogdeath.show = true	
+	dogdeath.hide()	
 
 func _on_try_again_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes//PlaceHolder.tscn") # Replace with function body.

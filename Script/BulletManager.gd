@@ -13,7 +13,7 @@ func create_bullet(shooter, collision_layer, velocity, offset, position, players
 	nbullet.velocity = velocity
 	nbullet.damage = playerstats.damage
 	nbullet.transform.scaled(playerstats.bullet_size)
-	Globals.add_child_to_main(nbullet)
+	get_tree().root.add_child(nbullet)
 	
 	return nbullet
 	
@@ -26,7 +26,7 @@ func create_bulletAi(shooter, collision_layer, velocity, offset, position):
 	nbullet.velocity = velocity
 	nbullet.damage = 5
 
-	Globals.add_child_to_main(nbullet)
+	get_tree().root.add_child(nbullet)
 	
 	return nbullet
 func shotgun(shooter, collision_layer, velocity, num, spread, speed_vary, slow_down, playerstats: Player_Status):
