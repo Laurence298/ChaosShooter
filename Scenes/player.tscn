@@ -803,7 +803,6 @@ offset_bottom = -15.0
 grow_vertical = 0
 text = "FPS: "
 label_settings = SubResource("LabelSettings_g6msb")
-script = ExtResource("9_4pyfx")
 
 [node name="heatGauge" type="Label" parent="CanvasLayer"]
 anchors_preset = 2
