@@ -25,10 +25,12 @@ position = Vector2(495, 217)
 scale = Vector2(0.49815, 0.766234)
 texture = ExtResource("2_1lw5k")
 
-[node name="Button" type="Button" parent="."]
+[node name="ResumeButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 360.0
 offset_top = 289.0
 offset_right = 604.0
 offset_bottom = 362.0
 text = "Reset"
+
+[connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
