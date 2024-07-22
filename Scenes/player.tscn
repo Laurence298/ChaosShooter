@@ -766,7 +766,6 @@ offset_bottom = -4.0
 grow_vertical = 0
 text = "FPS: "
 label_settings = SubResource("LabelSettings_g6msb")
-script = ExtResource("5_a7yqq")
 
 [node name="health visual" type="Label" parent="CanvasLayer"]
 anchors_preset = 2
