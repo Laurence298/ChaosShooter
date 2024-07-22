@@ -9,7 +9,7 @@ extends Area2D
 
 
 func _on_body_entered(body):
-	if(body.is_in_group("player")):
+	if body.is_in_group("player"):
 		var updated_status = Player_Status.new()
 		updated_status.bullet_size = bullet_size
 		updated_status.enemyKnockBackStreangth = recoil
