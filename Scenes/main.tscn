@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Script/main.gd" id="1_e5dyd"]
 [ext_resource type="PackedScene" uid="uid://dwxko5gcwd3w4" path="res://Scenes/Enemy.tscn" id="2_8de5i"]
 [ext_resource type="PackedScene" uid="uid://c60tvy3hgo56j" path="res://Scenes/player.tscn" id="7_abgl2"]
+[ext_resource type="AudioStream" uid="uid://c21ogpey2tneq" path="res://assets/Robofunk.wav" id="7_sr0x6"]
 [ext_resource type="PackedScene" uid="uid://60b1hxcxvq3w" path="res://Scenes/Menus/PauseMenu.tscn" id="8_yhf1k"]
 [ext_resource type="Script" path="res://Script/EnemySpawner.gd" id="9_rykgk"]
 [ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="10_6eeyb"]
@@ -17,6 +18,7 @@ glow_hdr_threshold = 1.1
 glow_hdr_luminance_cap = 101.65
 
 [node name="Node2D" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_e5dyd")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -46,5 +48,9 @@ z_index = 6
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 script = ExtResource("10_6eeyb")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_sr0x6")
+autoplay = true
 
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]
