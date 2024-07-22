@@ -1,11 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://dg2ooau0vrcse"]
+[gd_scene load_steps=9 format=3 uid="uid://dg2ooau0vrcse"]
 
 [ext_resource type="Script" path="res://Script/main.gd" id="1_e5dyd"]
 [ext_resource type="PackedScene" uid="uid://vgv1eqkdo6ju" path="res://room.tscn" id="2_nmk2p"]
 [ext_resource type="PackedScene" uid="uid://c60tvy3hgo56j" path="res://Scenes/player.tscn" id="7_abgl2"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://dnky713twoylc" path="res://Scenes/Powerups/PowerSource.tscn" id="7_ivppe"]
+=======
+>>>>>>> d05946c05437eb5b795e67f29d3bfbffce826579
 [ext_resource type="PackedScene" uid="uid://dwxko5gcwd3w4" path="res://Scenes/Enemy.tscn" id="8_aggf8"]
-[ext_resource type="PackedScene" uid="uid://60b1hxcxvq3w" path="res://Scenes/Menus/PauseMenu.tscn" id="8_yhf1k"]
+[ext_resource type="PackedScene" path="res://Scenes/Menus/PauseMenu.tscn" id="8_yhf1k"]
 [ext_resource type="Script" path="res://Script/EnemySpawner.gd" id="9_rykgk"]
 [ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="10_6eeyb"]
 
@@ -53,6 +56,7 @@ bullet_size = Vector2(2, 2)
 power_up = 1
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
+position = Vector2(10, -18)
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_yhf1k")]
 visible = false

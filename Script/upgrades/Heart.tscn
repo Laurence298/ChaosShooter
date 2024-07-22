@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://di7krexos2t2d"]
+
+[ext_resource type="PackedScene" uid="uid://btbh7dlx8ypvy" path="res://Scenes/Powerups/PowerUp.tscn" id="1_ogjv7"]
+
+[node name="Heart" instance=ExtResource("1_ogjv7")]

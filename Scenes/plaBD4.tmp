@@ -821,7 +821,6 @@ stream = ExtResource("7_o2vm6")
 
 [node name="HeartTick" type="Timer" parent="."]
 
-[connection signal="WeaponFired" from="." to="." method="_on_weapon_fired"]
 [connection signal="on_energy_changed" from="." to="CanvasLayer/energy" method="_on_character_body_2d_on_energy_changed"]
 [connection signal="on_health_changed" from="." to="CanvasLayer/health visual" method="_on_character_body_2d_on_health_changed"]
 [connection signal="on_heat_changed" from="." to="CanvasLayer/heatGauge" method="_on_character_body_2d_on_heat_changed"]
