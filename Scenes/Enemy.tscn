@@ -43,7 +43,6 @@ animations = [{
 size = Vector2(39, 25)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
-y_sort_enabled = true
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_kknp0")
