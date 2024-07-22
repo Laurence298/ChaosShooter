@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bldefhs6y1sxr"
-path="res://.godot/imported/rustobjects.png-3d280a2f37aabedebe76d76134cc38d3.ctex"
+uid="uid://c3ir7pu6blyts"
+path="res://.godot/imported/rustGun.png-9648a862be60a12ec02f901240497568.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/rustobjects.png"
-dest_files=["res://.godot/imported/rustobjects.png-3d280a2f37aabedebe76d76134cc38d3.ctex"]
+source_file="res://assets/rustGun.png"
+dest_files=["res://.godot/imported/rustGun.png-9648a862be60a12ec02f901240497568.ctex"]
 
 [params]
 

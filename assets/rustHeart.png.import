@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://58mv01s30c1l"
-path="res://.godot/imported/rustupgrades.png-aab2fabb01f2bc5faf8f3d899d01baa6.ctex"
+uid="uid://vpgcgnr1kuod"
+path="res://.godot/imported/rustHeart.png-11142d7470733302ae4e440c38f214e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/rustupgrades.png"
-dest_files=["res://.godot/imported/rustupgrades.png-aab2fabb01f2bc5faf8f3d899d01baa6.ctex"]
+source_file="res://assets/rustHeart.png"
+dest_files=["res://.godot/imported/rustHeart.png-11142d7470733302ae4e440c38f214e2.ctex"]
 
 [params]
 
