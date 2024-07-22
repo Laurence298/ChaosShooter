@@ -1,10 +1,10 @@
-[gd_scene load_steps=52 format=3 uid="uid://vgv1eqkdo6ju"]
+[gd_scene load_steps=53 format=3 uid="uid://vgv1eqkdo6ju"]
 
 [ext_resource type="Script" path="res://Scenes/Room.gd" id="1_kgakx"]
 [ext_resource type="Texture2D" uid="uid://ds7d4qkp042wf" path="res://assets/rustFurniture.png" id="3_qx4pq"]
 [ext_resource type="Texture2D" uid="uid://256aellyh8cx" path="res://assets/rustSmallobjects.png" id="4_j6frt"]
 [ext_resource type="Texture2D" uid="uid://dke50ng51dks" path="res://assets/rustRocktiles.png" id="5_ykipf"]
-[ext_resource type="PackedScene" path="res://Scenes/EnemySpawner.tscn" id="6_60iqm"]
+[ext_resource type="PackedScene" uid="uid://c12dhf2dnrm6q" path="res://Scenes/EnemySpawner.tscn" id="6_60iqm"]
 [ext_resource type="Texture2D" uid="uid://dwo8bliyfgevc" path="res://assets/rusttiles.png" id="8_4pm48"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_82cls"]
@@ -445,6 +445,9 @@ _data = {
 "fade_out": SubResource("Animation_kgu0e")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iap6w"]
+size = Vector2(111, 20)
+
 [node name="Room" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_kgakx")
@@ -490,7 +493,7 @@ scale = Vector2(25.3893, 19.7263)
 
 [node name="EnemySpawner2" parent="." instance=ExtResource("6_60iqm")]
 position = Vector2(1336, 1485)
-scale = Vector2(15.4693, 17.3293)
+scale = Vector2(15.614, 17.329)
 maxspawnedEnemy = 4
 
 [node name="EnemySpawner3" parent="." instance=ExtResource("6_60iqm")]
@@ -524,3 +527,9 @@ scale = Vector2(24.1996, -13.4207)
 [node name="EnemySpawner9" parent="." instance=ExtResource("6_60iqm")]
 position = Vector2(2910, 1617)
 scale = Vector2(36.4508, -24.5447)
+
+[node name="blockade1" type="Node" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="blockade1"]
+position = Vector2(973, 1739)
+shape = SubResource("RectangleShape2D_iap6w")

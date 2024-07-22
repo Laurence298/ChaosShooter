@@ -2,18 +2,20 @@
 
 [ext_resource type="Script" path="res://Script/EnemySpawner.gd" id="1_b7aq3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4ijj"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k7d6i"]
 
 [node name="EnemySpawner" type="Node2D"]
 scale = Vector2(1.925, 1.925)
 script = ExtResource("1_b7aq3")
+maxspawnedEnemy = null
+enemycount = null
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_x4ijj")
+shape = SubResource("RectangleShape2D_k7d6i")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

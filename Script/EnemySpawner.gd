@@ -16,7 +16,6 @@ func _process(delta):
 
 
 func _on_timer_timeout():
-	print("not spawn")
 	if(enemycount <= maxspawnedEnemy):
 		print("spawn")
 		var randiEnemy = randi_range(1,4)
@@ -28,7 +27,9 @@ func _on_timer_timeout():
 			new_enemy = RANGEDENEMY.instantiate()
 		new_enemy.global_position = self.global_position
 		new_enemy.modulate = Color.from_hsv(randf(), 1.0 , 1.0)
-		get_parent().add_child(new_enemy)
+		new_enemy.position = self.global_position
+		get_tree().root.add_child(new_enemy)
+
 
 
 
