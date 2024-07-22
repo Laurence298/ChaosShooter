@@ -1,13 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://dg2ooau0vrcse"]
+[gd_scene load_steps=12 format=3 uid="uid://dg2ooau0vrcse"]
 
 [ext_resource type="Script" path="res://Script/main.gd" id="1_e5dyd"]
 [ext_resource type="PackedScene" uid="uid://dwxko5gcwd3w4" path="res://Scenes/Enemy.tscn" id="2_8de5i"]
 [ext_resource type="PackedScene" uid="uid://c60tvy3hgo56j" path="res://Scenes/player.tscn" id="7_abgl2"]
+[ext_resource type="PackedScene" uid="uid://c12dhf2dnrm6q" path="res://Scenes/EnemySpawner.tscn" id="7_e1w5x"]
+[ext_resource type="Script" path="res://Scenes/MenuHub.gd" id="7_pg6ue"]
 [ext_resource type="PackedScene" uid="uid://vgv1eqkdo6ju" path="res://room.tscn" id="7_rg305"]
 [ext_resource type="AudioStream" uid="uid://c21ogpey2tneq" path="res://assets/Robofunk.wav" id="7_sr0x6"]
-[ext_resource type="PackedScene" uid="uid://qtlfk40niesh" path="res://Scenes/RangedEnemy.tscn" id="8_vok55"]
+[ext_resource type="PackedScene" uid="uid://054im774ytgn" path="res://Scenes/Menus/WinMenu.tscn" id="8_wl0yv"]
 [ext_resource type="PackedScene" uid="uid://60b1hxcxvq3w" path="res://Scenes/Menus/PauseMenu.tscn" id="8_yhf1k"]
 [ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="10_6eeyb"]
+[ext_resource type="PackedScene" uid="uid://cq63hn0bhba1i" path="res://Scenes/Menus/DeathMenu.tscn" id="10_ynfiv"]
 
 [sub_resource type="Environment" id="Environment_k3g3d"]
 background_mode = 3
@@ -35,9 +38,6 @@ position = Vector2(561, 37)
 position = Vector2(433, 273)
 collision_mask = 4
 
-[node name="PauseMenu" parent="." instance=ExtResource("8_yhf1k")]
-z_index = 6
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 script = ExtResource("10_6eeyb")
@@ -46,6 +46,26 @@ script = ExtResource("10_6eeyb")
 stream = ExtResource("7_sr0x6")
 autoplay = true
 
+<<<<<<< HEAD
+[node name="EnemySpawner" parent="." instance=ExtResource("7_e1w5x")]
+position = Vector2(479, 252)
+scale = Vector2(50, 25)
+
+[node name="MenuHub" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("7_pg6ue")
+
+[node name="WinMenu" parent="MenuHub" instance=ExtResource("8_wl0yv")]
+visible = false
+
+[node name="PauseMenu" parent="MenuHub" instance=ExtResource("8_yhf1k")]
+z_index = 6
+
+[node name="DeathMenu" parent="MenuHub" instance=ExtResource("10_ynfiv")]
+visible = false
+
+[connection signal="on_health_changed" from="Player" to="MenuHub" method="_on_player_on_health_changed"]
+[connection signal="on_heat_changed" from="Player" to="MenuHub" method="_on_player_on_heat_changed"]
 [node name="Room" parent="." instance=ExtResource("7_rg305")]
 position = Vector2(-422, -1820)
 
