@@ -70,5 +70,5 @@ offset_right = 937.0
 offset_bottom = 128.0
 texture = ExtResource("5_fclox")
 
-[connection signal="pressed" from="TryAgainButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="TryAgainButton" to="." method="_on_try_again_button_pressed"]
+[connection signal="pressed" from="TryAgainButton" to="." method="_on_start_button_pressed"]
