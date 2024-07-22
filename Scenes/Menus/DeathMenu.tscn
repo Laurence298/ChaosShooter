@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://cq63hn0bhba1i"]
+
+[ext_resource type="Script" path="res://Script/DeathMenu.gd" id="1_v7anb"]
+[ext_resource type="Texture2D" uid="uid://d3t614grp7f82" path="res://assets/zdoom-console-try-again.png" id="2_sru4t"]
+[ext_resource type="Texture2D" uid="uid://bx4kregwnki6l" path="res://assets/zdoom-console-robot-combusted.png" id="3_rrsou"]
+[ext_resource type="Texture2D" uid="uid://dq6k6pd83f8wx" path="res://assets/zdoom-console-robot-got-rabis.png" id="4_17kbc"]
+[ext_resource type="Texture2D" uid="uid://bi42v1bq5whxo" path="res://assets/zdoom-console-robot-got-shot.png" id="5_fclox"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_d6w84"]
+
+[node name="DeathMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v7anb")
+
+[node name="DeathMenuBlock" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -4.0
+offset_right = 959.0
+offset_bottom = 509.0
+color = Color(0.568973, 0.568973, 0.568973, 1)
+
+[node name="TryAgainButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 358.0
+offset_top = 185.0
+offset_right = 588.0
+offset_bottom = 251.0
+scale = Vector2(1.03228, 0.997191)
+text = "
+
+"
+icon = SubResource("CanvasTexture_d6w84")
+
+[node name="Zdoom-console-try-again" type="Sprite2D" parent="."]
+position = Vector2(488, 227)
+scale = Vector2(0.424335, 0.831429)
+texture = ExtResource("2_sru4t")
+
+[node name="CombustText" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(483, 86)
+scale = Vector2(0.933566, 1.01948)
+texture = ExtResource("3_rrsou")
+
+[node name="DogText" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(478, 88)
+texture = ExtResource("4_17kbc")
+
+[node name="GunText" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(474, 89)
+texture = ExtResource("5_fclox")
+
+[connection signal="pressed" from="TryAgainButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="TryAgainButton" to="." method="_on_try_again_button_pressed"]
