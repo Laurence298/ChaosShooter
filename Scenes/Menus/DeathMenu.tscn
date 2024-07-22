@@ -29,7 +29,7 @@ color = Color(0.568973, 0.568973, 0.568973, 1)
 layout_mode = 0
 offset_left = 358.0
 offset_top = 185.0
-offset_right = 588.0
+offset_right = 596.0
 offset_bottom = 251.0
 scale = Vector2(1.03228, 0.997191)
 text = "
@@ -38,7 +38,7 @@ text = "
 icon = SubResource("CanvasTexture_d6w84")
 
 [node name="Zdoom-console-try-again" type="Sprite2D" parent="."]
-position = Vector2(488, 227)
+position = Vector2(479, 227)
 scale = Vector2(0.424335, 0.831429)
 texture = ExtResource("2_sru4t")
 
