@@ -8,3 +8,5 @@ var weapon_Type: PowerUp.WeaponType
 var firerate : float
 var bullet_size : Vector2
 var damage = 0
+
+

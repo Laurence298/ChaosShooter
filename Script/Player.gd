@@ -49,6 +49,9 @@ var upgrades = {
 "Legs": drill,
 }
 #body modification Status
+
+signal  WeaponFired
+signal  on_health_changed(health)
 const MAX_HEALTH : int = 100
 var health: int = MAX_HEALTH
 
@@ -77,7 +80,8 @@ var extra_velocity:Vector2 = Vector2(0,0)
 
 func _ready():
 	#anim_sprite.play("default")
-	equiped_Weapon = PowerUp.WeaponType.SMALL_GUN
+
+	randomize_stats();
 	can_fire = true;
 	sprite_upper.play(upgrades["Body"]["FR"])
 	arm.play(upgrades["Weapon"]["FR"])
@@ -171,11 +175,13 @@ func _process(delta):
 func _input(event):
 	match equiped_Weapon:
 		PowerUp.WeaponType.SMALL_GUN:
+			WeaponFired.emit()
 			if event.is_action_released("shoot") && can_fire:
 				FireGunSeting()
 				BulletManager.create_bullet(self, BulletManager.CollisionLayer.ENEMY, vec_to_crosshair*1500, 25, self.global_position, playerstats)
 				DebugDraw2D.line(self.position, self.position + (vec_to_crosshair * self.global_position.distance_to(crosshair.global_position)), Color.RED, 3, 0.5)
 		PowerUp.WeaponType.BIG_GUN:
+			WeaponFired.emit()
 			if event.is_action_pressed("shoot") && can_fire:
 				FireGunSeting()
 				BulletManager.shotgun(self, BulletManager.CollisionLayer.ENEMY, vec_to_crosshair*1500, 15, 35, 500, 0,playerstats)
@@ -202,15 +208,51 @@ func set_combatStatus(player_stat: Player_Status):
 	playerstats = player_stat
 	if(playerstats.body_modification != PowerUp.body_modification.NOMODIFICATION):
 		curretbodymodification = playerstats.body_modification
+		setup_body_upgrades(curretbodymodification)
 	if(playerstats.weapon_Type != PowerUp.WeaponType.NOWEAPON):
 		$FireRateTimer.wait_time = playerstats.firerate
 		knockBack = playerstats.KnockBackStreagth
 		equiped_Weapon = playerstats.weapon_Type
+		setup_weapon_upgrades(equiped_Weapon)
 
 
+func setup_weapon_upgrades(equiped_Weapon):
+	match equiped_Weapon:
+		PowerUp.WeaponType.SMALL_GUN:
+			upgrades.Weapon = gun
+		PowerUp.WeaponType.BIG_GUN:
+			upgrades.Weapon = blaster
+func setup_body_upgrades(curretbodymodification):
+	match curretbodymodification:
+		PowerUp.body_modification.HEART:
+			upgrades.Body = heart
+		PowerUp.body_modification.POWERSOURCE:
+			upgrades.Body = battery
+func randomize_stats():
+	var randomstats = Player_Status.new()
+	randomstats.body_modification = PowerUp.body_modification.NOMODIFICATION
+	randomstats.bullet_size = Vector2.ONE
+	randomstats.enemyKnockBackStreangth = randi_range(100, 200)
+	randomstats.damage = randi_range(8, 15)
+	randomstats.firerate = randi_range(0.3,0.8)
+	randomstats.KnockBackStreagth = randi_range(100, 200)
+	randomstats.weapon_Type = PowerUp.WeaponType.SMALL_GUN
+	set_combatStatus(randomstats)
+	
+func  takeDamage(damage):
+	health -= damage
+	print("im hit hit i say")
+	on_health_changed.emit(health)
+	
 func _on_fire_rate_timer_timeout():
 	can_fire = true
 
+ 
 
-func _on_heart_tick_timeout():
-	health -= 1;
+
+func _on_weapon_fired():
+	match equiped_Weapon:
+		PowerUp.body_modification.HEART:
+			health -= 1
+		PowerUp.body_modification.POWERSOURCE:
+			heat_gauge += 10

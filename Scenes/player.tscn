@@ -706,7 +706,7 @@ autoplay = "front"
 [node name="SpriteUpper" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -14)
 sprite_frames = SubResource("SpriteFrames_wfq45")
-animation = &"back_right1"
+animation = &"front_left1"
 autoplay = "front_right1"
 frame_progress = 0.721216
 
@@ -779,5 +779,6 @@ stream = ExtResource("7_o2vm6")
 
 [node name="HeartTick" type="Timer" parent="."]
 
+[connection signal="WeaponFired" from="." to="." method="_on_weapon_fired"]
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
 [connection signal="timeout" from="HeartTick" to="." method="_on_heart_tick_timeout"]

@@ -50,5 +50,7 @@ position = Vector2(378, 178)
 firerate = 0.2
 recoil = 1500
 bullet_size = Vector2(2, 2)
+power_up = 1
+weapon_Type = 2
 
 [connection signal="timeout" from="Room/EnemySpawner/Timer" to="Room/EnemySpawner" method="_on_timer_timeout"]
