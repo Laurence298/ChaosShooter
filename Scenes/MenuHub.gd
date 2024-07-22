@@ -18,11 +18,19 @@ func _process(delta):
 		pauseMenu()
 	pass
 
-func _on_player_on_health_changed(health):
-	if health == 0:
+func _on_player_on_health_changed(health, whoattacked):
+	if health == 0 and whoattacked == "dog":
 		dmenu._on_dog_death()
 		dmenu.show()
+		Engine.time_scale = 0
+	elif health == 0 and whoattacked == "soldier":
+		dmenu._on_gun_death()
+		dmenu.show()
+		Engine.time_scale = 0
 	pass # Replace with function body.
 
 func _on_player_on_heat_changed(heat):
+	if heat == 100:
+		dmenu._on_heat_death()
+		dmenu.show()
 	pass # Replace with function body.

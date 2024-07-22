@@ -10,6 +10,7 @@ class_name Player
 @onready var sprite_upper = $SpriteUpper
 @onready var arm = $Arm
 @onready var sprite_lower = $SpriteLower
+
 var is_paused := false
 var heart = {
 	"BL": "back_left1",
@@ -55,7 +56,7 @@ var upgrades = {
 #body modification Status
 
 signal  WeaponFired
-signal  on_health_changed(health)
+signal  on_health_changed(health, whoattacked)
 signal  on_energy_changed(energy)
 signal  on_heat_changed(heat)
 const MAX_HEALTH : int = 100
@@ -301,14 +302,14 @@ func randomize_stats():
 	randomstats.KnockBackStreagth = randi_range(100, 200)
 	set_combatStatus(randomstats)
 	
-func  takeDamage(damage):
+func  takeDamage(damage, whoattacked):
 		health -= damage
 		health = clamp(health, 0 ,MAX_HEALTH)
-		on_health_changed.emit(health)
+		on_health_changed.emit(health, whoattacked)
 		if(health <= 0):
 			hide()
 func hit(hitevent:HitEvent):
-	takeDamage(hitevent.damage)
+	takeDamage(hitevent.damage, "soldier")
 	return
 func _on_fire_rate_timer_timeout():
 	can_fire = true
