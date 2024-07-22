@@ -65,7 +65,7 @@ var current_body
 var current_legs
 #endregion
 
-var curretbodymodification: PowerUp.body_modification
+@export var curretbodymodification: PowerUp.body_modification
 var vec_to_crosshair
 
 # Bullet info and weapon
@@ -74,7 +74,7 @@ const BULLET = preload("res://Scenes/bullet.tscn")
 const SPEED = 300.0
 const MAX_ENERGY:float = 100
 var can_fire : bool;
-var equiped_Weapon: PowerUp.WeaponType
+@export var equiped_Weapon: PowerUp.WeaponType
 var energy:float = MAX_ENERGY
 var knockBack: float;
 
@@ -279,13 +279,14 @@ func setup_body_upgrades(curretbodymodification):
 			upgrades.Body = battery
 func randomize_stats():
 	var randomstats = Player_Status.new()
-	randomstats.body_modification = PowerUp.body_modification.NOMODIFICATION
+	var randbod : int = randi_range(0,1)
+	randomstats.weapon_Type = randi_range(0,1)
+	randomstats.body_modification = randi_range(0,1)
 	randomstats.bullet_size = Vector2.ONE
 	randomstats.enemyKnockBackStreangth = randi_range(100, 200)
 	randomstats.damage = randi_range(8, 15)
-	randomstats.firerate = randi_range(0.3,0.8)
+	randomstats.firerate = randf_range(0.3,0.8)
 	randomstats.KnockBackStreagth = randi_range(100, 200)
-	randomstats.weapon_Type = PowerUp.WeaponType.SMALL_GUN
 	set_combatStatus(randomstats)
 	
 func  takeDamage(damage):
@@ -296,7 +297,6 @@ func  takeDamage(damage):
 func _on_fire_rate_timer_timeout():
 	can_fire = true
 
- 
 
 
 func _on_weapon_fired():
