@@ -12,4 +12,5 @@ func _process(delta):
 	pass
 
 func add_child_to_main(child):
-	main_scene.add_child(child)
+	#main_scene.add_child(child)
+	pass
