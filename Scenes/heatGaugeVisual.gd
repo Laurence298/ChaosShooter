@@ -9,3 +9,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_character_body_2d_on_heat_changed(heat):
+	self.text = "Heat:" + str(heat)

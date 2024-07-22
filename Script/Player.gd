@@ -57,7 +57,7 @@ signal  on_heat_changed(heat)
 const MAX_HEALTH : int = 100
 var health: int = MAX_HEALTH
 
-const max_heat_gauge: float= 100
+const max_heat_gauge: float= 0
 var heat_gauge: float = max_heat_gauge
 #body modification
 var current_arm
@@ -83,6 +83,8 @@ var extra_velocity:Vector2 = Vector2(0,0)
 func _ready():
 	#anim_sprite.play("default")
 	on_health_changed.emit(health)
+	on_energy_changed.emit(energy)
+	on_heat_changed.emit(heat_gauge)
 	randomize_stats();
 	can_fire = true;
 	sprite_upper.play(upgrades["Body"]["FR"])
@@ -177,14 +179,14 @@ func _process(delta):
 func _input(event):
 	match equiped_Weapon:
 		PowerUp.WeaponType.SMALL_GUN:
-			WeaponFired.emit()
-			if event.is_action_released("shoot") && can_fire:
+			if event.is_action_pressed("shoot") && can_fire:
+				WeaponFired.emit()
 				FireGunSeting()
 				BulletManager.create_bullet(self, BulletManager.CollisionLayer.ENEMY, vec_to_crosshair*1500, 25, self.global_position, playerstats)
 				DebugDraw2D.line(self.position, self.position + (vec_to_crosshair * self.global_position.distance_to(crosshair.global_position)), Color.RED, 3, 0.5)
 		PowerUp.WeaponType.BIG_GUN:
-			WeaponFired.emit()
 			if event.is_action_pressed("shoot") && can_fire:
+				WeaponFired.emit()
 				FireGunSeting()
 				BulletManager.shotgun(self, BulletManager.CollisionLayer.ENEMY, vec_to_crosshair*1500, 15, 35, 500, 0,playerstats)
 				DebugDraw2D.line(self.position, self.position + (vec_to_crosshair * self.global_position.distance_to(crosshair.global_position)), Color.RED, 3, 0.5)
@@ -227,6 +229,7 @@ func setup_weapon_upgrades(equiped_Weapon):
 func setup_body_upgrades(curretbodymodification):
 	match curretbodymodification:
 		PowerUp.body_modification.HEART:
+			print("heart")
 			upgrades.Body = heart
 		PowerUp.body_modification.POWERSOURCE:
 			upgrades.Body = battery
@@ -256,5 +259,9 @@ func _on_weapon_fired():
 	match equiped_Weapon:
 		PowerUp.body_modification.HEART:
 			health -= 1
+			print("heart hurt")
+			on_health_changed.emit(health)
 		PowerUp.body_modification.POWERSOURCE:
 			heat_gauge += 10
+			print("fire hurt")
+			on_heat_changed.emit(heat_gauge)
