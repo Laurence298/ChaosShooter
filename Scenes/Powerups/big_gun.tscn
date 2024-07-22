@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnky713twoylc"]
+[gd_scene load_steps=4 format=3 uid="uid://cbfc1v7raua2n"]
 
 [ext_resource type="Script" path="res://Script/upgrades/CollectableItems.gd" id="1_ttlnq"]
 [ext_resource type="Texture2D" uid="uid://dun0hie4645a6" path="res://assets/rustBlaster.png" id="2_1kwky"]
