@@ -6,10 +6,10 @@ extends Control
 @onready var dogdeath = $DogText
 
 func _on_heat_death():
-	heatdeath.show = true
+	heatdeath.hide()	
 	
 func _on_gun_death():
-	gundeath.show = true	
+	gundeath.hide()	
 	
 func _on_dog_death():
 	dogdeath.hide()	

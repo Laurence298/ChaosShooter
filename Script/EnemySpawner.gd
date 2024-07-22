@@ -7,7 +7,8 @@ var enemies = [ENEMY, RANGEDENEMY]
 @export var enemycount: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	var parentroom = get_parent()
+	parentroom.speakToroom.connect(_on_room_speak_toroom)
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,3 +39,7 @@ func _on_area_2d_body_entered(body):
 		$Timer.start()
 		print("realease the beast")
 
+
+
+func _on_room_speak_toroom():
+	pass # Replace with function body.

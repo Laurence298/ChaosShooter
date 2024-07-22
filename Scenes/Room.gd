@@ -4,6 +4,8 @@ extends Node2D
 @export var width_in_tiles:int = 0
 @export var height_in_tiles:int = 0
 @export var starting_location:Vector2
+var totalrooms
+signal speakToroom
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$ColorRect.size.x = 64*width_in_tiles
