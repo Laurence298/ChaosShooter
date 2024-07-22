@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< Updated upstream
 uid="uid://8tkd7sywpavr"
+=======
+uid="uid://broykvlj26gq6"
+>>>>>>> Stashed changes
 path="res://.godot/imported/heatbar.png-9e80b63208509cd4bdc84f5707c34991.ctex"
 metadata={
 "vram_texture": false
