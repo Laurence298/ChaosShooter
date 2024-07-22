@@ -15,27 +15,26 @@ script = ExtResource("1_c58rw")
 
 [node name="MainMenuBlock" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = -10.0
-offset_top = -2.0
-offset_right = 950.0
-offset_bottom = 511.0
+offset_left = 2.0
+offset_right = 962.0
+offset_bottom = 513.0
 color = Color(0.568973, 0.568973, 0.568973, 1)
 
 [node name="StartButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 350.0
-offset_top = 185.0
-offset_right = 580.0
-offset_bottom = 251.0
+offset_left = 355.0
+offset_top = 193.0
+offset_right = 585.0
+offset_bottom = 259.0
 text = "
 "
 
 [node name="QuitButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 350.0
-offset_top = 185.0
-offset_right = 580.0
-offset_bottom = 251.0
+offset_left = 356.0
+offset_top = 278.0
+offset_right = 586.0
+offset_bottom = 344.0
 text = "
 "
 
@@ -44,7 +43,7 @@ position = Vector2(465, 118)
 texture = ExtResource("2_46mdb")
 
 [node name="Zdoom-console-start" type="Sprite2D" parent="."]
-position = Vector2(461, 222)
+position = Vector2(472, 228)
 scale = Vector2(0.560606, 0.580808)
 texture = ExtResource("3_rp50o")
 
