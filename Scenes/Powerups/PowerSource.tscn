@@ -1,24 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://csimj4npat76p"]
+[gd_scene load_steps=2 format=3 uid="uid://d7ob1iirl3ir"]
 
-[ext_resource type="Script" path="res://Script/upgrades/CollectableItems.gd" id="1_tn5o1"]
-[ext_resource type="Texture2D" uid="uid://cj7v4i0k03op3" path="res://assets/batterypickup.png" id="2_28jg6"]
+[ext_resource type="PackedScene" uid="uid://btbh7dlx8ypvy" path="res://Scenes/Powerups/PowerUp.tscn" id="1_wgtsp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8sgnp"]
+[node name="powersource" instance=ExtResource("1_wgtsp")]
 
-[node name="powersource" type="Area2D"]
-script = ExtResource("1_tn5o1")
-firerate = 0.3
-recoil = 500
-bullet_size = Vector2(1, 1)
-damage = 10
-weapon_Type = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(1.555, 1.555)
-shape = SubResource("RectangleShape2D_8sgnp")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_28jg6")
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]

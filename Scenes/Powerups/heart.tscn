@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1lqpmlaf5udr"]
+
+[ext_resource type="PackedScene" uid="uid://btbh7dlx8ypvy" path="res://Scenes/Powerups/PowerUp.tscn" id="1_cxkm0"]
+[ext_resource type="Texture2D" uid="uid://vpgcgnr1kuod" path="res://assets/rustHeart.png" id="2_4yhod"]
+
+[node name="Heart" instance=ExtResource("1_cxkm0")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_4yhod")
