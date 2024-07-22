@@ -44,8 +44,8 @@ var drill = {
 }
 
 var upgrades = {
-"Body": battery, 
-"Weapon": blaster,
+"Body": heart, 
+"Weapon": gun,
 "Legs": drill,
 }
 #body modification Status
@@ -134,27 +134,12 @@ func _process(delta):
 	
 	# flips drill legs and body and weapon accorreding to the direction
 	var direction = Input.get_vector("left", "right", "up", "down")
-	if direction.x > 0:
-		sprite_lower.scale.x = 1
-		sprite_upper.play(upgrades["Body"]["FR"])
-		arm.play(upgrades["Weapon"]["FR"])
-		arm.z_index = 0
-	elif direction.x < 0:
-		sprite_lower.scale.x = -1
-		sprite_upper.play(upgrades["Body"]["FL"])
-		arm.play(upgrades["Weapon"]["FL"])
-		arm.z_index = 0
-	else:
-		sprite_upper.stop()
-		arm.z_index = 0
 	if direction.y < 0:
 		if direction.x > 0:
-			sprite_lower.scale.x = 1
 			sprite_upper.play(upgrades["Body"]["BR"])
 			arm.play(upgrades["Weapon"]["BR"])
 			arm.z_index = 1
 		elif direction.x < 0:
-			sprite_lower.scale.x = -1
 			sprite_upper.play(upgrades["Body"]["BL"])
 			arm.play(upgrades["Weapon"]["BL"])
 			arm.z_index = 1
@@ -171,6 +156,18 @@ func _process(delta):
 			sprite_upper.play(upgrades["Body"]["FR"])
 			arm.play(upgrades["Weapon"]["FR"])
 			arm.z_index = 0
+		if direction.x > 0:
+			sprite_lower.scale.x = 1
+			sprite_upper.play(upgrades["Body"]["FR"])
+			arm.play(upgrades["Weapon"]["FR"])
+			arm.z_index = 0
+		elif direction.x < 0:
+			sprite_lower.scale.x = -1
+			sprite_upper.play(upgrades["Body"]["FL"])
+			arm.play(upgrades["Weapon"]["FL"])
+			arm.z_index = 0
+		#if direction.x == 0 and direction.y == 0:
+			#sprite_upper.stop()
 func _input(event):
 	match equiped_Weapon:
 		PowerUp.WeaponType.SMALL_GUN:
