@@ -3,11 +3,7 @@
 [ext_resource type="Script" path="res://Script/main.gd" id="1_e5dyd"]
 [ext_resource type="PackedScene" uid="uid://dwxko5gcwd3w4" path="res://Scenes/Enemy.tscn" id="2_8de5i"]
 [ext_resource type="PackedScene" uid="uid://c60tvy3hgo56j" path="res://Scenes/player.tscn" id="7_abgl2"]
-<<<<<<< Updated upstream
-[ext_resource type="PackedScene" uid="uid://vgv1eqkdo6ju" path="res://room.tscn" id="7_rg305"]
-=======
 [ext_resource type="PackedScene" uid="uid://dwxko5gcwd3w4" path="res://Scenes/Enemy.tscn" id="8_aggf8"]
->>>>>>> Stashed changes
 [ext_resource type="PackedScene" uid="uid://60b1hxcxvq3w" path="res://Scenes/Menus/PauseMenu.tscn" id="8_yhf1k"]
 [ext_resource type="Script" path="res://Script/EnemySpawner.gd" id="9_rykgk"]
 [ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="10_6eeyb"]
@@ -27,7 +23,6 @@ script = ExtResource("1_e5dyd")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_k3g3d")
 
-[node name="Room" parent="." instance=ExtResource("7_rg305")]
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 position = Vector2(10, -18)
