@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cubc1wwh14pry" path="res://assets/rustBotweapons.png" id="2_d407g"]
 [ext_resource type="Texture2D" uid="uid://chigyohjc2vt0" path="res://assets/crosshair64.png" id="4_e5nnj"]
 [ext_resource type="Texture2D" uid="uid://uw5nf708eryx" path="res://assets/rustBotlegs.png" id="4_n7nnh"]
-[ext_resource type="PackedScene" path="res://Scenes/Menus/WinMenu.tscn" id="7_ap02r"]
+[ext_resource type="PackedScene" uid="uid://054im774ytgn" path="res://Scenes/Menus/WinMenu.tscn" id="7_ap02r"]
 [ext_resource type="AudioStream" uid="uid://dfedlq7qbv6uv" path="res://assets/untitled.ogg" id="7_o2vm6"]
 [ext_resource type="Script" path="res://Scenes/healthVisual.gd" id="8_pptvu"]
 [ext_resource type="PackedScene" uid="uid://cq63hn0bhba1i" path="res://Scenes/Menus/DeathMenu.tscn" id="9_cypgn"]
