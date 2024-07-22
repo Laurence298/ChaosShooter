@@ -2,7 +2,6 @@ extends CanvasLayer
 @onready var pmenu = $PauseMenu
 @onready var dmenu = $DeathMenu
 @onready var wmenu = $WinMenu
-
 var is_paused := false
 # Called when the node enters the scene tree for the first time.
 func pauseMenu():
@@ -19,10 +18,11 @@ func _process(delta):
 		pauseMenu()
 	pass
 
-
 func _on_player_on_health_changed(health):
+	if health == 0:
+		dmenu._on_dog_death()
+		dmenu.show()
 	pass # Replace with function body.
-
 
 func _on_player_on_heat_changed(heat):
 	pass # Replace with function body.
