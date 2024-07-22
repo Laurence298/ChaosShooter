@@ -42,12 +42,16 @@ var drill = {
 	"B": "back",
 	"F": "front"
 }
+var body_upgrades = [heart, battery]
+var arm_upgrades = [gun, blaster]
+var leg_upgrades = [drill]
 
 var upgrades = {
 "Body": heart, 
 "Weapon": gun,
 "Legs": drill,
 }
+
 #body modification Status
 
 signal  WeaponFired
@@ -60,9 +64,7 @@ var health: int = MAX_HEALTH
 const max_heat_gauge: float= 0
 var heat_gauge: float = max_heat_gauge
 #body modification
-var current_arm
-var current_body
-var current_legs
+
 #endregion
 
 @export var curretbodymodification: PowerUp.body_modification
@@ -81,6 +83,7 @@ var knockBack: float;
 var extra_velocity:Vector2 = Vector2(0,0)
 
 func _ready():
+	randomize_upgrades()
 	#anim_sprite.play("default")
 	on_health_changed.emit(health)
 	on_energy_changed.emit(energy)
@@ -94,7 +97,9 @@ func _ready():
 func _physics_process(delta):
 
 	var direction = Input.get_vector("left", "right", "up", "down")
-	
+	if direction == Vector2(0,0):
+		print("no input movement")
+		pass
 	velocity = Vector2.ZERO
 	
 	#if extra_velocity.length() < 100:
@@ -117,6 +122,13 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	#self.position = position.round()
+
+func randomize_upgrades():
+	upgrades = {
+	"Body": body_upgrades.pick_random(), 
+	"Weapon": arm_upgrades.pick_random(),
+	"Legs": leg_upgrades.pick_random(),
+	}
 
 func _process(delta):
 	crosshair.position = get_local_mouse_position()
