@@ -18,12 +18,14 @@ glow_hdr_threshold = 1.1
 glow_hdr_luminance_cap = 101.65
 
 [node name="Node2D" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_e5dyd")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_k3g3d")
 
 [node name="Room" parent="." instance=ExtResource("7_rg305")]
+position = Vector2(-430, -2965)
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 position = Vector2(10, -18)
