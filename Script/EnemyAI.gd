@@ -13,7 +13,7 @@ var current_state: EnemyState = EnemyState.MOVEMENT_STATE
 
 
 var extra_velocity = Vector2.ZERO
-
+var AttackFrame : bool = false
 var enemy_ID = 1
 var nav_tick = 0
 
@@ -35,9 +35,11 @@ func _physics_process(delta):
 	match current_state:
 		EnemyState.IDLE_STATE:
 			print("hi")
+			AttackFrame = false
 		EnemyState.ATTACK_STATE:
 			if(isattacking):
 				isattacking = false
+				AttackFrame = true
 				$AttackTimer.start()
 				direction = (player.position - self.position).normalized()
 				
@@ -111,3 +113,10 @@ func hit(hitevent:HitEvent):
 	extra_velocity += hitevent.knockback_dir * hitevent.knockback_strength
 	handle_damage(hitevent.damage)
 	return
+
+
+func _on_area_2d_body_entered(body):
+		if body.is_in_group("player") && AttackFrame:
+			print("Gabe GABE I HIT HIM")
+			print("Good Job Sparky")
+			body.takeDamage(5)
