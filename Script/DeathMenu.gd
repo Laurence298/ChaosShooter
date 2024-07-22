@@ -6,17 +6,10 @@ extends Control
 @onready var dogdeath = $DogText
 
 func _on_heat_death():
-<<<<<<< Updated upstream
-	heatdeath.hide()	
-	
-func _on_gun_death():
-	gundeath.hide()	
-=======
 	heatdeath.show()
 	
 func _on_gun_death():
 	gundeath.show()	
->>>>>>> Stashed changes
 	
 func _on_dog_death():
 	dogdeath.show()
