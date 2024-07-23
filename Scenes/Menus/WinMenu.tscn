@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://cck0t7xd0b4h4" path="res://assets/doom-bigupper-you-tamed-the-chaos.png" id="2_1lw5k"]
 [ext_resource type="Texture2D" uid="uid://bowh6ly1s4ht6" path="res://assets/doom-bigupper-reset.png" id="3_vbsce"]
 
-
 [node name="WinMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15

@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://c60tvy3hgo56j"]
+[gd_scene load_steps=96 format=3 uid="uid://c60tvy3hgo56j"]
 
 [ext_resource type="Script" path="res://Script/Player.gd" id="1_jikto"]
 [ext_resource type="Texture2D" uid="uid://qvotkkj6htnr" path="res://assets/rustBotbody.png" id="2_2rhe1"]
@@ -6,12 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cubc1wwh14pry" path="res://assets/rustBotweapons.png" id="2_d407g"]
 [ext_resource type="Texture2D" uid="uid://chigyohjc2vt0" path="res://assets/crosshair64.png" id="4_e5nnj"]
 [ext_resource type="Texture2D" uid="uid://uw5nf708eryx" path="res://assets/rustBotlegs.png" id="4_n7nnh"]
-[ext_resource type="PackedScene" uid="uid://054im774ytgn" path="res://Scenes/Menus/WinMenu.tscn" id="7_ap02r"]
 [ext_resource type="AudioStream" uid="uid://dfedlq7qbv6uv" path="res://assets/untitled.ogg" id="7_o2vm6"]
-[ext_resource type="Script" path="res://Scenes/healthVisual.gd" id="8_pptvu"]
-[ext_resource type="PackedScene" uid="uid://cq63hn0bhba1i" path="res://Scenes/Menus/DeathMenu.tscn" id="9_cypgn"]
 [ext_resource type="Script" path="res://Scenes/heatGaugeVisual.gd" id="10_fu6hc"]
-[ext_resource type="PackedScene" uid="uid://60b1hxcxvq3w" path="res://Scenes/Menus/PauseMenu.tscn" id="10_g7rlu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w86yq"]
 atlas = ExtResource("2_d407g")
@@ -737,15 +733,25 @@ texture = ExtResource("4_e5nnj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="WinMenu" parent="CanvasLayer" instance=ExtResource("7_ap02r")]
-process_mode = 3
-visible = false
-
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 offset_left = 6.0
 offset_top = 56.0
 offset_right = 239.0
 offset_bottom = 80.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+offset_left = 6.0
+offset_top = 88.0
+offset_right = 239.0
+offset_bottom = 112.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer"]
+offset_left = 7.0
+offset_top = 121.0
+offset_right = 240.0
+offset_bottom = 145.0
 color = Color(0, 0, 0, 1)
 
 [node name="EnergyBar" type="ColorRect" parent="CanvasLayer"]
@@ -767,18 +773,16 @@ grow_vertical = 0
 text = "FPS: "
 label_settings = SubResource("LabelSettings_g6msb")
 
-[node name="health visual" type="Label" parent="CanvasLayer"]
+[node name="healthbar" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 138.0
-offset_top = -49.0
-offset_right = 285.0
-offset_bottom = -5.0
+offset_left = 8.0
+offset_top = -421.0
+offset_right = 237.0
+offset_bottom = -403.0
 grow_vertical = 0
-text = "FPS: "
-label_settings = SubResource("LabelSettings_g6msb")
-script = ExtResource("8_pptvu")
+color = Color(1, 0, 0, 1)
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 2
@@ -792,17 +796,16 @@ grow_vertical = 0
 text = "Energy"
 label_settings = SubResource("LabelSettings_g6msb")
 
-[node name="energy" type="Label" parent="CanvasLayer"]
+[node name="heat_bar" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 414.0
-offset_top = -59.0
-offset_right = 561.0
-offset_bottom = -15.0
+offset_left = 9.0
+offset_top = -389.0
+offset_right = 237.0
+offset_bottom = -370.0
 grow_vertical = 0
-text = "FPS: "
-label_settings = SubResource("LabelSettings_g6msb")
+color = Color(1, 0.509804, 0, 1)
 
 [node name="heatGauge" type="Label" parent="CanvasLayer"]
 anchors_preset = 2
@@ -816,12 +819,6 @@ grow_vertical = 0
 text = "FPS: "
 label_settings = SubResource("LabelSettings_g6msb")
 script = ExtResource("10_fu6hc")
-
-[node name="DeathMenu" parent="CanvasLayer" instance=ExtResource("9_cypgn")]
-process_mode = 3
-visible = false
-
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_g7rlu")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_o2vm6")
@@ -837,8 +834,8 @@ autostart = true
 [node name="HeatCooldown" type="Timer" parent="."]
 
 [connection signal="WeaponFired" from="." to="." method="_on_weapon_fired"]
-[connection signal="on_energy_changed" from="." to="CanvasLayer/energy" method="_on_character_body_2d_on_energy_changed"]
-[connection signal="on_health_changed" from="." to="CanvasLayer/health visual" method="_on_character_body_2d_on_health_changed"]
+[connection signal="on_energy_changed" from="." to="CanvasLayer/heat_bar" method="_on_character_body_2d_on_energy_changed"]
+[connection signal="on_health_changed" from="." to="CanvasLayer/healthbar" method="_on_character_body_2d_on_health_changed"]
 [connection signal="on_heat_changed" from="." to="CanvasLayer/heatGauge" method="_on_character_body_2d_on_heat_changed"]
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
 [connection signal="timeout" from="HeartTick" to="." method="_on_heart_tick_timeout"]

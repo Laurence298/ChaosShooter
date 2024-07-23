@@ -9,8 +9,7 @@ var current_state: EnemyState = EnemyState.MOVEMENT_STATE
 @onready var enemies := get_tree().get_nodes_in_group("enemy")
 @export var min_Distance = 3
 @onready var sprite_2d = $Sprite2D
-
-
+var whoattacked = ["dog", "soldier"]
 
 var extra_velocity = Vector2.ZERO
 var AttackFrame : bool = false
@@ -119,4 +118,4 @@ func _on_area_2d_body_entered(body):
 		if body.is_in_group("player") && AttackFrame:
 			print("Gabe GABE I HIT HIM")
 			print("Good Job Sparky")
-			body.takeDamage(5,)
+			body.takeDamage(25, "dog")

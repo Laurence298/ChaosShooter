@@ -42,21 +42,33 @@ position = Vector2(479, 227)
 scale = Vector2(0.424335, 0.831429)
 texture = ExtResource("2_sru4t")
 
-[node name="CombustText" type="Sprite2D" parent="."]
+[node name="CombustText" type="TextureRect" parent="."]
 visible = false
-position = Vector2(483, 86)
+layout_mode = 0
+offset_left = 23.0001
+offset_top = 31.0
+offset_right = 1024.0
+offset_bottom = 108.0
 scale = Vector2(0.933566, 1.01948)
 texture = ExtResource("3_rrsou")
 
-[node name="DogText" type="Sprite2D" parent="."]
+[node name="DogText" type="TextureRect" parent="."]
 visible = false
-position = Vector2(478, 88)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 27.0
+offset_right = 977.0
+offset_bottom = 111.0
 texture = ExtResource("4_17kbc")
 
-[node name="GunText" type="Sprite2D" parent="."]
+[node name="GunText" type="TextureRect" parent="."]
 visible = false
-position = Vector2(474, 89)
+layout_mode = 0
+offset_left = 41.0
+offset_top = 44.0
+offset_right = 937.0
+offset_bottom = 128.0
 texture = ExtResource("5_fclox")
 
-[connection signal="pressed" from="TryAgainButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="TryAgainButton" to="." method="_on_try_again_button_pressed"]
+[connection signal="pressed" from="TryAgainButton" to="." method="_on_start_button_pressed"]
