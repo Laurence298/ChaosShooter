@@ -70,14 +70,15 @@ func _physics_process(delta):
 
 func DirectionProcess(delta):
 	#move towards the player until there close enough
-	if(global_position.distance_to(player.global_position) > 100):
-		var next_position = nav_agent.get_next_path_position()
-		var dir = to_local(next_position).normalized()
-		velocity = dir * speed
-	if(global_position.distance_to(player.global_position) < 100):
-		var next_position = -nav_agent.get_next_path_position()
-		var dir = to_local(next_position).normalized()
-		velocity = dir * speed
+	if player:
+		if(global_position.distance_to(player.global_position) > 100):
+			var next_position = nav_agent.get_next_path_position()
+			var dir = to_local(next_position).normalized()
+			velocity = dir * speed
+		if(global_position.distance_to(player.global_position) < 100):
+			var next_position = -nav_agent.get_next_path_position()
+			var dir = to_local(next_position).normalized()
+			velocity = dir * speed
 	
 	# start shooting the player once in range
 	if(global_position.distance_to(player.global_position) < shooting_range && isattacking ):
