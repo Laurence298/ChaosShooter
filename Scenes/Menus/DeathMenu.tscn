@@ -27,10 +27,10 @@ color = Color(0.568973, 0.568973, 0.568973, 1)
 
 [node name="TryAgainButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 358.0
-offset_top = 185.0
-offset_right = 596.0
-offset_bottom = 251.0
+offset_left = 357.0
+offset_top = 189.0
+offset_right = 595.0
+offset_bottom = 255.0
 scale = Vector2(1.03228, 0.997191)
 text = "
 
@@ -71,4 +71,3 @@ offset_bottom = 128.0
 texture = ExtResource("5_fclox")
 
 [connection signal="pressed" from="TryAgainButton" to="." method="_on_try_again_button_pressed"]
-[connection signal="pressed" from="TryAgainButton" to="." method="_on_start_button_pressed"]
