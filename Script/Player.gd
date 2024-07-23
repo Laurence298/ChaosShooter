@@ -3,7 +3,7 @@ class_name Player
 
 @onready var crosshair = $Crosshair
 @onready var energy_bar = $CanvasLayer/EnergyBar
-@onready var health_bar = $"CanvasLayer/healthbar"
+@onready var health_bar = $CanvasLayer/health_bar
 @onready var heat_bar = $CanvasLayer/heat_bar
 
 
