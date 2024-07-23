@@ -21,7 +21,7 @@ var nav_tick = 0
 @export var shooting_range = 400
 @export var bullet_speed = 500
 var direction
-var health = 100
+var health = 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

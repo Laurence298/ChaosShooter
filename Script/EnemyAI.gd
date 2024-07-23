@@ -19,7 +19,7 @@ var nav_tick = 0
 @export var isattacking = false;
 var attackSpeed = 200;
 var direction
-var health = 100
+var health = 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
