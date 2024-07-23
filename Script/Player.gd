@@ -136,8 +136,7 @@ func _process(delta):
 	heat_bar.scale.x = heat_gauge/max_heat_gauge
 	if health == 0:
 		print("dead")
-	if heat_gauge == 100:
-		print("Overloarded!")
+	heat_gauge = clamp(heat_gauge - 5 *delta, 0, max_heat_gauge)
 	
 	var mouse_pos = get_global_mouse_position()
 	#camera_2d.offset.x = round((mouse_pos.x - global_position.x) / (1920.0 / 2.0) * 150)
@@ -259,9 +258,11 @@ func Body_modification(curretbodymodification: PowerUp.body_modification):
 			#logic to change the body parts
 
 func FireGunSeting():
-	energy -= 100
 	can_fire = false
-	$FireRateTimer.start()
+	if upgrades.Weapon == gun:
+		$FireRateTimerGun.start()
+	if upgrades.Weapon == blaster:
+		$FireRateTimerBlaster.start()
 	extra_velocity += vec_to_crosshair * -1 * knockBack
 	$AudioStreamPlayer.play()
 	#BulletManager.create_bullet(self, BulletManager.CollisionLayer.ENEMY, vec_to_crosshair*1500, 25, self.global_position)
@@ -272,7 +273,7 @@ func set_combatStatus(player_stat: Player_Status):
 		curretbodymodification = playerstats.body_modification
 		setup_body_upgrades(curretbodymodification)
 	if(playerstats.weapon_Type != PowerUp.WeaponType.NOWEAPON):
-		$FireRateTimer.wait_time = playerstats.firerate
+		$FireRateTimerGun.wait_time = playerstats.firerate
 		knockBack = playerstats.KnockBackStreagth
 		equiped_Weapon = playerstats.weapon_Type
 		setup_weapon_upgrades(equiped_Weapon)
@@ -307,7 +308,6 @@ func randomize_stats():
 
 func takeDamage(damage, whoattacked):
 		health = clamp(health - damage, 0 ,MAX_HEALTH)
-		on_health_changed.emit(health)
 		on_health_changed.emit(health, whoattacked)
 		if(health <= 0):
 			hide()
@@ -326,9 +326,17 @@ func _on_weapon_fired():
 			print("heart hurt")
 			on_health_changed.emit(health)
 		PowerUp.body_modification.POWERSOURCE:
-			heat_gauge = clamp(heat_gauge +30, 0 ,max_heat_gauge)
-			print("fire hurt")
-			on_heat_changed.emit(heat_gauge)
+			match upgrades.Weapon:
+				blaster:
+					heat_gauge = clamp(heat_gauge +30, 0 ,max_heat_gauge)
+					print("fire hurt")
+					on_heat_changed.emit(heat_gauge)
+				gun:
+					heat_gauge = clamp(heat_gauge +10, 0 ,max_heat_gauge)
+					print("fire hurt")
+					on_heat_changed.emit(heat_gauge)
+				_:
+					print("unknown gun")
 
 
 func _on_recover_health_timeout():
