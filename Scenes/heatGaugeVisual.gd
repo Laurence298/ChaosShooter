@@ -11,5 +11,5 @@ func _process(delta):
 	pass
 
 
-func _on_character_body_2d_on_heat_changed(heat):
-	self.text = "Heat:" + str(heat)
+func _on_character_body_2d_on_health_changed(health):
+	self.text = "health:" + str(health)

@@ -811,10 +811,10 @@ color = Color(1, 0.509804, 0, 1)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 276.0
-offset_top = -54.0
-offset_right = 423.0
-offset_bottom = -10.0
+offset_left = 19.0
+offset_top = -353.0
+offset_right = 166.0
+offset_bottom = -309.0
 grow_vertical = 0
 text = "FPS: "
 label_settings = SubResource("LabelSettings_g6msb")
@@ -823,7 +823,10 @@ script = ExtResource("10_fu6hc")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_o2vm6")
 
-[node name="FireRateTimer" type="Timer" parent="."]
+[node name="FireRateTimerGun" type="Timer" parent="."]
+
+[node name="FireRateTimerBlaster" type="Timer" parent="."]
+wait_time = 2.0
 
 [node name="HeartTick" type="Timer" parent="."]
 
@@ -837,7 +840,8 @@ autostart = true
 [connection signal="on_energy_changed" from="." to="CanvasLayer/heat_bar" method="_on_character_body_2d_on_energy_changed"]
 [connection signal="on_health_changed" from="." to="CanvasLayer/healthbar" method="_on_character_body_2d_on_health_changed"]
 [connection signal="on_heat_changed" from="." to="CanvasLayer/heatGauge" method="_on_character_body_2d_on_heat_changed"]
-[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
+[connection signal="timeout" from="FireRateTimerGun" to="." method="_on_fire_rate_timer_timeout"]
+[connection signal="timeout" from="FireRateTimerBlaster" to="." method="_on_fire_rate_timer_timeout"]
 [connection signal="timeout" from="HeartTick" to="." method="_on_heart_tick_timeout"]
 [connection signal="timeout" from="RecoverHealth" to="." method="_on_recover_health_timeout"]
 [connection signal="timeout" from="HeatCooldown" to="." method="_on_heat_cooldown_timeout"]

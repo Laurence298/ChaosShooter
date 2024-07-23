@@ -5,7 +5,7 @@ const BULLET_EFFECT = preload("res://Scenes/BulletEffect.tscn")
 
 var velocity:Vector2 = Vector2(0,0)
 var shooter = null
-var damage: int
+var damage: int = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,7 +27,7 @@ func _on_body_entered(body):
 		hit_event.knockback_strength = 50
 		hit_event.shooter = self.shooter
 		hit_event.damage = damage
-		
+		print("printhiy")
 		body.hit(hit_event)
 		
 	
