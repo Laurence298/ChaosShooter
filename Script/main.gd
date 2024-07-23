@@ -22,3 +22,8 @@ func _on_room_talktothe_master(roomcleared, maxroom):
 	if roomcleared == maxroom:
 		allroomSpawned = true
 	pass # Replace with function body.
+
+func _input(event):
+	if event.is_action_pressed("r"):
+		Engine.time_scale= 1
+		get_tree().reload_current_scene() 

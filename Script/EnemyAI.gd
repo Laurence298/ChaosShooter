@@ -83,12 +83,14 @@ func DirectionProcess(delta):
 	velocity = dir * speed
 	
 	
-	if(global_position.distance_to(player.global_position) < 150):
+	if(position.distance_to(player.position) < 150):
 		isattacking = true;
 		current_state =  EnemyState.ATTACK_STATE
+	pass
 
 func  MakePath():
-	nav_agent.target_position = player.global_position
+	if player != null:
+		nav_agent.target_position = player.global_position
 	#print(nav_agent.target_position)
 
 func _on_timer_timeout():

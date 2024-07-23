@@ -29,9 +29,10 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
-	var player_pos = player.position
-	if player_pos:
-		gun_sprite.look_at(player_pos)
+	if player != null:
+		var player_pos = player.position
+		if player_pos:
+			gun_sprite.look_at(player_pos)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -70,22 +71,24 @@ func _physics_process(delta):
 
 func DirectionProcess(delta):
 	#move towards the player until there close enough
-	if player:
-		if(global_position.distance_to(player.global_position) > 100):
-			var next_position = nav_agent.get_next_path_position()
-			var dir = to_local(next_position).normalized()
-			velocity = dir * speed
-		if(global_position.distance_to(player.global_position) < 100):
-			var next_position = -nav_agent.get_next_path_position()
-			var dir = to_local(next_position).normalized()
-			velocity = dir * speed
-	
-	# start shooting the player once in range
-	if(global_position.distance_to(player.global_position) < shooting_range && isattacking ):
-		current_state = EnemyState.ATTACK_STATE
+	if player != null:
+		if player:
+			if(global_position.distance_to(player.global_position) > 100):
+				var next_position = nav_agent.get_next_path_position()
+				var dir = to_local(next_position).normalized()
+				velocity = dir * speed
+			if(global_position.distance_to(player.global_position) < 100):
+				var next_position = -nav_agent.get_next_path_position()
+				var dir = to_local(next_position).normalized()
+				velocity = dir * speed
+		
+		# start shooting the player once in range
+		if(global_position.distance_to(player.global_position) < shooting_range && isattacking ):
+			current_state = EnemyState.ATTACK_STATE
 
 func  MakePath():
-	nav_agent.target_position = player.global_position
+	if player != null:
+		nav_agent.target_position = player.global_position
 	#print(nav_agent.target_position)
 
 func _on_timer_timeout():
