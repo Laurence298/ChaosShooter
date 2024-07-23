@@ -15,5 +15,5 @@ func _on_dog_death():
 	dogdeath.show()
 
 func _on_try_again_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes//main.tscn") # Replace with function body.
+	get_tree().quit()
 	pass # Replace with function body.

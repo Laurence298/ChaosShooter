@@ -5,6 +5,9 @@ const RANGEDENEMY = preload("res://Scenes/RangedEnemy.tscn")
 var enemies = [ENEMY, RANGEDENEMY]
 @export var maxspawnedEnemy: int = 3
 @export var enemycount: int = 0
+
+var isdone:bool 
+signal areaInfo(isclear:int)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var parentroom = get_parent()
@@ -17,10 +20,10 @@ func _process(delta):
 
 func _on_timer_timeout():
 	if(enemycount <= maxspawnedEnemy):
-		print("spawn")
 		var randiEnemy = randi_range(1,4)
 		var new_enemy = null
 		enemycount += 1
+		isdone = true;
 		if(randiEnemy % 2 == 0):
 			new_enemy = ENEMY.instantiate()
 		else:
@@ -30,6 +33,9 @@ func _on_timer_timeout():
 		new_enemy.position = self.global_position
 		get_tree().root.add_child(new_enemy)
 	else:
+		if isdone:
+			isdone = false;
+			areaInfo.emit(1)
 		pass
 
 
@@ -37,7 +43,7 @@ func _on_area_2d_body_entered(body):
 	if body.is_in_group("player") :
 		$Timer.autostart = true
 		$Timer.start()
-		print("realease the beast")
+
 
 
 

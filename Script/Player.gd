@@ -73,7 +73,7 @@ var heat_gauge: float = 0
 
 
 @export var curretbodymodification: PowerUp.body_modification
-var vec_to_crosshair
+var vec_to_crosshair: Vector2
 
 # Bullet info and weapon
 var playerstats: Player_Status
@@ -237,7 +237,7 @@ func _process(delta):
 func _input(event):
 	match equiped_Weapon:
 		PowerUp.WeaponType.SMALL_GUN:
-			if event.is_action_pressed("shoot") && can_fire:
+			if !event.is_action_pressed("shoot") && can_fire:
 				WeaponFired.emit()
 				FireGunSeting()
 				BulletManager.create_bullet(self, BulletManager.CollisionLayer.ENEMY, vec_to_crosshair*1500, 25, self.global_position, playerstats)

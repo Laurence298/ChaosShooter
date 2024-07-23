@@ -64,3 +64,4 @@ position = Vector2(-490, -1826)
 
 [connection signal="on_health_changed" from="Player" to="MenuHub" method="_on_player_on_health_changed"]
 [connection signal="on_heat_changed" from="Player" to="MenuHub" method="_on_player_on_heat_changed"]
+[connection signal="talktotheMaster" from="Room" to="." method="_on_room_talktothe_master"]
