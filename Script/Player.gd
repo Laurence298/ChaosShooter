@@ -137,6 +137,7 @@ func _process(delta):
 	if health == 0:
 		print("dead")
 	heat_gauge = clamp(heat_gauge - 5 *delta, 0, max_heat_gauge)
+	print("health ==" + str(health))
 	
 	var mouse_pos = get_global_mouse_position()
 	#camera_2d.offset.x = round((mouse_pos.x - global_position.x) / (1920.0 / 2.0) * 150)
