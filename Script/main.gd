@@ -15,8 +15,8 @@ func _ready():
 func _process(delta):
 	enemycount = get_tree().get_nodes_in_group("enemy").size()
 	
-	if allroomSpawned:
-		menuhub.show()#win
+	if allroomSpawned && enemycount <= 0 :
+		menuhub.show()#
 
 func _on_room_talktothe_master(roomcleared, maxroom):
 	if roomcleared == maxroom:
