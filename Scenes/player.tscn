@@ -796,7 +796,6 @@ autostart = true
 [node name="HeatCooldown" type="Timer" parent="."]
 
 [connection signal="WeaponFired" from="." to="." method="_on_weapon_fired"]
-[connection signal="on_energy_changed" from="." to="CanvasLayer/heat_bar" method="_on_character_body_2d_on_energy_changed"]
 [connection signal="timeout" from="FireRateTimerGun" to="." method="_on_fire_rate_timer_timeout"]
 [connection signal="timeout" from="FireRateTimerBlaster" to="." method="_on_fire_rate_timer_timeout"]
 [connection signal="timeout" from="HeartTick" to="." method="_on_heart_tick_timeout"]
