@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cubc1wwh14pry" path="res://assets/rustBotweapons.png" id="2_d407g"]
 [ext_resource type="Texture2D" uid="uid://chigyohjc2vt0" path="res://assets/crosshair64.png" id="4_e5nnj"]
 [ext_resource type="Texture2D" uid="uid://uw5nf708eryx" path="res://assets/rustBotlegs.png" id="4_n7nnh"]
+[ext_resource type="PackedScene" uid="uid://054im774ytgn" path="res://Scenes/Menus/WinMenu.tscn" id="7_ap02r"]
 [ext_resource type="AudioStream" uid="uid://dfedlq7qbv6uv" path="res://assets/untitled.ogg" id="7_o2vm6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w86yq"]
@@ -758,7 +759,7 @@ grow_vertical = 0
 text = "FPS: "
 label_settings = SubResource("LabelSettings_g6msb")
 
-[node name="healthbar" type="ColorRect" parent="CanvasLayer"]
+[node name="health visual" type="Label" parent="CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -767,7 +768,8 @@ offset_top = -490.0
 offset_right = 238.0
 offset_bottom = -472.0
 grow_vertical = 0
-color = Color(1, 0, 0, 1)
+text = "FPS: "
+label_settings = SubResource("LabelSettings_g6msb")
 
 [node name="heat_bar" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 2
@@ -778,15 +780,13 @@ offset_top = -458.0
 offset_right = 238.0
 offset_bottom = -439.0
 grow_vertical = 0
-color = Color(1, 0.509804, 0, 1)
+text = "FPS: "
+label_settings = SubResource("LabelSettings_g6msb")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_o2vm6")
 
 [node name="FireRateTimerGun" type="Timer" parent="."]
-
-[node name="FireRateTimerBlaster" type="Timer" parent="."]
-wait_time = 2.0
 
 [node name="HeartTick" type="Timer" parent="."]
 
@@ -800,7 +800,6 @@ autostart = true
 [connection signal="on_energy_changed" from="." to="CanvasLayer/heat_bar" method="_on_character_body_2d_on_energy_changed"]
 [connection signal="on_health_changed" from="." to="CanvasLayer/healthbar" method="_on_character_body_2d_on_health_changed"]
 [connection signal="timeout" from="FireRateTimerGun" to="." method="_on_fire_rate_timer_timeout"]
-[connection signal="timeout" from="FireRateTimerBlaster" to="." method="_on_fire_rate_timer_timeout"]
 [connection signal="timeout" from="HeartTick" to="." method="_on_heart_tick_timeout"]
 [connection signal="timeout" from="RecoverHealth" to="." method="_on_recover_health_timeout"]
 [connection signal="timeout" from="HeatCooldown" to="." method="_on_heat_cooldown_timeout"]

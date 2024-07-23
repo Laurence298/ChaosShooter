@@ -570,3 +570,5 @@ shape = SubResource("RectangleShape2D_ejl1q")
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="RandomizeArea"]
 position = Vector2(-2, 47)
 shape = SubResource("RectangleShape2D_ejl1q")
+
+[connection signal="speakToroom" from="." to="EnemySpawner" method="_on_room_speak_toroom"]
