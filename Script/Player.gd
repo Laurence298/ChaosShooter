@@ -133,10 +133,18 @@ func _process(delta):
 	else: 
 		heat_bar.visible = false
 		color_rect_3.visible = false
+	if heat_gauge > 60:
+		$CanvasLayer/heat_bar/GPUParticles2D.visible = true
+	else:
+		$CanvasLayer/heat_bar/GPUParticles2D.visible = false
 	heat_bar.scale.x = heat_gauge/max_heat_gauge
 	
-	heat_gauge = clamp(heat_gauge - 5 *delta, 0, max_heat_gauge)
-	health = clamp(health + 1 *delta, 0, MAX_HEALTH)
+	match upgrades.Body:
+		battery:
+			heat_gauge = clamp(heat_gauge - 5 *delta, 0, max_heat_gauge)
+		heart:
+			heat_gauge = clamp(heat_gauge - 10 *delta, 0, max_heat_gauge)
+	health = clamp(health + 6 * delta, 0, MAX_HEALTH)
 	
 	var mouse_pos = get_global_mouse_position()
 	#camera_2d.offset.x = round((mouse_pos.x - global_position.x) / (1920.0 / 2.0) * 150)
@@ -328,7 +336,7 @@ func _on_weapon_fired():
 		PowerUp.body_modification.POWERSOURCE:
 			match upgrades.Weapon:
 				blaster:
-					heat_gauge = clamp(heat_gauge +30, 0 ,max_heat_gauge)
+					heat_gauge = clamp(heat_gauge +20, 0 ,max_heat_gauge)
 					print("fire hurt")
 					on_heat_changed.emit(heat_gauge)
 				gun:

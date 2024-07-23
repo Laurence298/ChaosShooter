@@ -15,7 +15,7 @@ func _on_dog_death():
 	dogdeath.show()
 
 func _on_try_again_button_pressed():
-	get_tree().quit() # Replace with function body.
+	get_tree().quit() # Replace with wawaaaaaaaaaaaaafunction body.
 
 	pass # Replace with function body.
 
