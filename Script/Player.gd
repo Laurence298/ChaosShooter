@@ -64,8 +64,8 @@ signal  WeaponFired
 signal  on_health_changed(health, whoattacked)
 signal  on_energy_changed(energy)
 signal  on_heat_changed(heat)
-const MAX_HEALTH : int = 100
-var health: int = MAX_HEALTH
+const MAX_HEALTH : float = 100
+var health: float = MAX_HEALTH
 
 const max_heat_gauge: float= 100
 var heat_gauge: float = 0
@@ -129,13 +129,12 @@ func _process(delta):
 	vec_to_crosshair = (crosshair.global_position - self.global_position).normalized()
 	
 	
-	health_bar.scale.x = health/100
+	health_bar.scale.x = health/MAX_HEALTH
 	
 	heat_bar.scale.x = heat_gauge/max_heat_gauge
-	if health == 0:
-		print("dead")
+	
 	heat_gauge = clamp(heat_gauge - 5 *delta, 0, max_heat_gauge)
-	print("health ==" + str(health))
+	health = clamp(health + 1 *delta, 0, MAX_HEALTH)
 	
 	var mouse_pos = get_global_mouse_position()
 	#camera_2d.offset.x = round((mouse_pos.x - global_position.x) / (1920.0 / 2.0) * 150)
