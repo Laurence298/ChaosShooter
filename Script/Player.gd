@@ -128,10 +128,8 @@ func _process(delta):
 	crosshair.position = get_local_mouse_position()
 	vec_to_crosshair = (crosshair.global_position - self.global_position).normalized()
 	
-	energy = clamp(energy+10*delta, 0, 100)
-	energy_bar.scale.x = energy/MAX_ENERGY
 	
-	health_bar.scale.x = health/MAX_HEALTH
+	health_bar.scale.x = health/100
 	
 	heat_bar.scale.x = heat_gauge/max_heat_gauge
 	if health == 0:
@@ -237,7 +235,7 @@ func _process(delta):
 func _input(event):
 	match equiped_Weapon:
 		PowerUp.WeaponType.SMALL_GUN:
-			if !event.is_action_pressed("shoot") && can_fire:
+			if event.is_action_pressed("shoot") && can_fire:
 				WeaponFired.emit()
 				FireGunSeting()
 				BulletManager.create_bullet(self, BulletManager.CollisionLayer.ENEMY, vec_to_crosshair*1500, 25, self.global_position, playerstats)

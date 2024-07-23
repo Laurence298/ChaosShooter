@@ -28,7 +28,6 @@ func _process(delta):
 func enter_room():
 	$AnimationPlayer.play("fade_out")
 func connectAreas():
-	$EnemySpawner.areaInfo.connect(areaCount)
 	$EnemySpawner2.areaInfo.connect(areaCount)
 	$EnemySpawner3.areaInfo.connect(areaCount)
 	$EnemySpawner4.areaInfo.connect(areaCount)
