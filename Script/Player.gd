@@ -322,7 +322,7 @@ func _on_weapon_fired():
 		PowerUp.body_modification.HEART:
 			health = clamp(health -10, 0 ,MAX_HEALTH)
 			print("heart hurt")
-			on_health_changed.emit(health)
+			on_health_changed.emit(health, "player")
 		PowerUp.body_modification.POWERSOURCE:
 			match upgrades.Weapon:
 				blaster:

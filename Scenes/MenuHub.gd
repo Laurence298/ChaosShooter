@@ -27,7 +27,10 @@ func _on_player_on_health_changed(health, whoattacked):
 		dmenu._on_gun_death()
 		dmenu.show()
 		Engine.time_scale = 0
-	pass # Replace with function body.
+	elif health < 1:
+		dmenu.show()
+		Engine.time_scale = 0 # Replace with function body.
+	pass
 
 func _on_player_on_heat_changed(heat):
 	if heat == 100:
