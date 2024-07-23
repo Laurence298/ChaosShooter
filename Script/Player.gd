@@ -2,9 +2,9 @@ extends CharacterBody2D
 class_name Player
 
 @onready var crosshair = $Crosshair
-@onready var energy_bar = $CanvasLayer/EnergyBar
 @onready var health_bar = $CanvasLayer/health_bar
 @onready var heat_bar = $CanvasLayer/heat_bar
+@onready var color_rect_3 = $CanvasLayer/ColorRect3
 
 
 #@onready var camera_2d = $Camera2D
@@ -62,7 +62,6 @@ var upgrades = {
 
 signal  WeaponFired
 signal  on_health_changed(health, whoattacked)
-signal  on_energy_changed(energy)
 signal  on_heat_changed(heat)
 const MAX_HEALTH : float = 100
 var health: float = MAX_HEALTH
@@ -79,10 +78,8 @@ var vec_to_crosshair: Vector2
 var playerstats: Player_Status
 const BULLET = preload("res://Scenes/bullet.tscn")
 const SPEED = 300.0
-const MAX_ENERGY:float = 100
 var can_fire : bool;
 @export var equiped_Weapon: PowerUp.WeaponType
-var energy:float = MAX_ENERGY
 var knockBack: float;
 
 var extra_velocity:Vector2 = Vector2(0,0)
@@ -90,7 +87,6 @@ var extra_velocity:Vector2 = Vector2(0,0)
 func _ready():
 	#anim_sprite.play("default")
 	on_health_changed.emit(health)
-	on_energy_changed.emit(energy)
 	on_heat_changed.emit(heat_gauge)
 	randomize_stats();
 	can_fire = true;
@@ -131,6 +127,12 @@ func _process(delta):
 	
 	health_bar.scale.x = health/MAX_HEALTH
 	
+	if upgrades.Body == battery or heat_gauge != 0:
+		heat_bar.visible = true
+		color_rect_3.visible = true
+	else: 
+		heat_bar.visible = false
+		color_rect_3.visible = false
 	heat_bar.scale.x = heat_gauge/max_heat_gauge
 	
 	heat_gauge = clamp(heat_gauge - 5 *delta, 0, max_heat_gauge)

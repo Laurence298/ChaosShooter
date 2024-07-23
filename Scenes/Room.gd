@@ -28,12 +28,16 @@ func _process(delta):
 func enter_room():
 	$AnimationPlayer.play("fade_out")
 func connectAreas():
+	$EnemySpawner.areaInfo.connect(areaCount)
 	$EnemySpawner2.areaInfo.connect(areaCount)
 	$EnemySpawner3.areaInfo.connect(areaCount)
 	$EnemySpawner4.areaInfo.connect(areaCount)
 	$EnemySpawner5.areaInfo.connect(areaCount)
 	$EnemySpawner6.areaInfo.connect(areaCount)
 	$EnemySpawner7.areaInfo.connect(areaCount)
+	$EnemySpawner8.areaInfo.connect(areaCount)
+	$EnemySpawner9.areaInfo.connect(areaCount)
+	$EnemySpawner10.areaInfo.connect(areaCount)
 	
 func areaCount(clearcounts:int):
 	clearCount += 1
