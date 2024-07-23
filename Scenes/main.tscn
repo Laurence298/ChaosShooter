@@ -48,6 +48,7 @@ autoplay = true
 
 [node name="MenuHub" type="CanvasLayer" parent="."]
 process_mode = 3
+process_priority = 50
 script = ExtResource("7_pg6ue")
 
 [node name="WinMenu" parent="MenuHub" instance=ExtResource("8_wl0yv")]
