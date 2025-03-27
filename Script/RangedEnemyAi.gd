@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-enum EnemyState {IDLE_STATE, ATTACK_STATE,MOVEMENT_STATE,COLLISION}
+enum EnemyState {IDLE_STATE, ATTACK_STATE, MOVEMENT_STATE, COLLISION}
 var current_state: EnemyState = EnemyState.MOVEMENT_STATE
 @onready var player := get_tree().get_first_node_in_group("player")
 @export var speed = 30;
@@ -33,6 +33,7 @@ func _process(delta):
 		var player_pos = player.position
 		if player_pos:
 			gun_sprite.look_at(player_pos)
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -90,6 +91,7 @@ func  MakePath():
 	if player != null:
 		nav_agent.target_position = player.global_position
 	#print(nav_agent.target_position)
+	pass
 
 func _on_timer_timeout():
 	#MakePath()

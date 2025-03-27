@@ -82,7 +82,6 @@ max_neighbors = 200
 max_speed = 8180.81
 avoidance_layers = 0
 avoidance_mask = 0
-debug_enabled = true
 
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 3.0

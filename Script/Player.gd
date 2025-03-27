@@ -134,9 +134,9 @@ func _process(delta):
 		heat_bar.visible = false
 		color_rect_3.visible = false
 	if heat_gauge > 60:
-		$CanvasLayer/heat_bar/GPUParticles2D.visible = true
+		$CanvasLayer/heat_bar/GPUParticles2D.emitting = true
 	else:
-		$CanvasLayer/heat_bar/GPUParticles2D.visible = false
+		$CanvasLayer/heat_bar/GPUParticles2D.emitting = false
 	heat_bar.scale.x = heat_gauge/max_heat_gauge
 	
 	match upgrades.Body:
